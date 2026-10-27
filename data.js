@@ -34,7 +34,7 @@ const QUESTS = {
   "baseline": 37.5,
   "baselineLabel": "二上 37.5%",
   "items": [
-    { "label": "修業", "value": 50, "note": "大一三學期 + 大二上，含暑修，學分超前" },
+    { "label": "修業", "value": 70.3, "note": "90 / 128 畢業學分，學分超前" },
     { "label": "專題研究", "value": 45, "note": "陳方中 Lab，專題（三）進行中" },
     { "label": "社團與行政", "value": 100, "note": "SPIE 會長、學生會、班代、系羽 — 早就過關" },
     { "label": "外語", "value": 60, "note": "中英母語、JLPT N3，朝 N2" },
