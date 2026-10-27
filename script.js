@@ -11,6 +11,46 @@ function renderHeroStats() {
     </div>`).join("");
 }
 
+function questRowHTML(label, note, pct, valueText, baseline) {
+  const fill = Math.min(pct, 100);
+  const state = pct >= 100 ? "is-done" : (baseline != null && pct < baseline ? "is-behind" : "");
+  return `
+    <div class="quest-row ${state}">
+      <div class="quest-head">
+        <span class="quest-label">${label}</span>
+        <span class="quest-value">${valueText}</span>
+      </div>
+      <div class="quest-track" role="img" aria-label="${label} ${valueText}">
+        <div class="quest-fill" style="width:${fill}%"></div>
+        ${baseline != null ? `<span class="quest-baseline" style="left:${baseline}%"></span>` : ""}
+      </div>
+      <p class="quest-note">${note}</p>
+    </div>`;
+}
+
+function renderQuests() {
+  const el = document.getElementById("questLog");
+  if (!el || typeof QUESTS === "undefined") return;
+  const b = QUESTS.baseline;
+  const g = QUESTS.gpa;
+
+  el.innerHTML = `
+    <div class="quest-legend">
+      <span><i class="legend-fill"></i>目前進度</span>
+      <span><i class="legend-baseline"></i>${QUESTS.baselineLabel}</span>
+      <span class="quest-legend-end">100% = 大四畢業</span>
+    </div>
+    ${QUESTS.groups.map(grp => `
+      <div class="quest-group">
+        <h3>${grp.heading}</h3>
+        ${grp.items.map(q => questRowHTML(q.label, q.note, q.value, q.value >= 100 ? "過關" : `${q.value}%`, b)).join("")}
+      </div>`).join("")}
+    <div class="quest-group">
+      <h3>GPA</h3>
+      ${questRowHTML("GPA", g.note, g.value / g.max * 100, `${g.value.toFixed(2)} / ${g.max}`, null)}
+    </div>`;
+}
+
 function starRow(n) {
   if (n == null) return '<span class="course-ratings-empty">尚未評分</span>';
   if (n === 0) return '<span class="course-ratings-empty">零學分</span>';
@@ -197,6 +237,7 @@ function renderOther() {
 initChrome(document.body.dataset.page);
 
 renderHeroStats();
+renderQuests();
 renderCourses();
 renderExperience();
 renderNZ();

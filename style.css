@@ -780,3 +780,91 @@ a { color: inherit; }
   font-size: 0.84rem;
   color: var(--text-muted);
 }
+
+/* Quest log (About page) */
+.quest-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.quest-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.quest-legend-end { margin-left: auto; font-family: var(--mono); }
+
+.legend-fill {
+  width: 18px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+.legend-baseline {
+  width: 0;
+  height: 14px;
+  border-left: 2px dashed var(--text-muted);
+}
+
+.quest-group { margin-bottom: 36px; }
+.quest-group:last-child { margin-bottom: 0; }
+
+.quest-group h3 {
+  font-size: 0.78rem;
+  font-family: var(--mono);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin: 0 0 14px;
+}
+
+.quest-row { margin-bottom: 18px; }
+
+.quest-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.quest-label { font-weight: 600; font-size: 0.95rem; }
+
+.quest-value {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.quest-track {
+  position: relative;
+  height: 10px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--text-muted) 16%, transparent);
+}
+
+.quest-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--accent);
+}
+
+.quest-row.is-behind .quest-fill { background: color-mix(in srgb, var(--accent) 45%, var(--text-muted)); }
+.quest-row.is-behind .quest-value { color: var(--text-muted); }
+
+.quest-baseline {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  border-left: 2px dashed var(--text-muted);
+  transform: translateX(-1px);
+}
+
+.quest-note {
+  margin: 5px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}

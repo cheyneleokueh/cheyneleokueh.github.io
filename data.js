@@ -27,6 +27,38 @@ const HERO_STATS = [
   }
 ];
 
+// ---------------- Quest log (home page) ----------------
+// value: % of the way to graduation (100 = 大四畢業). baseline: where 二上 "should" be.
+
+const QUESTS = {
+  "baseline": 37.5,
+  "baselineLabel": "二上 37.5%",
+  "groups": [
+    {
+      "heading": "主線任務",
+      "items": [
+        { "label": "修業", "value": 50, "note": "大一三學期 + 大二上，含暑修，學分超前" },
+        { "label": "專題研究", "value": 45, "note": "陳方中 Lab，專題（三）進行中" },
+        { "label": "社團與行政", "value": 100, "note": "SPIE 會長、學生會、班代、系羽 — 早就過關" },
+        { "label": "外語", "value": 60, "note": "中英母語、JLPT N3，朝 N2" },
+        { "label": "自學", "value": 65, "note": "臺大 OCW 8 門、Google Cloud 8 徽章" },
+        { "label": "實習與職涯", "value": 10, "note": "還沒開始" }
+      ]
+    },
+    {
+      "heading": "支線任務",
+      "items": [
+        { "label": "愛情", "value": 37.5, "note": "剛好壓在線上" },
+        { "label": "運動", "value": 60, "note": "系羽隊長、網球課" },
+        { "label": "證照與冒險", "value": 50, "note": "PADI Open Water ✓，滑雪 Level 1 目標 2027" },
+        { "label": "國際交流", "value": 30, "note": "國際處學生代表；交換還沒" },
+        { "label": "打工與家教", "value": 50, "note": "家教進行中" }
+      ]
+    }
+  ],
+  "gpa": { "value": 3.72, "max": 4.3, "note": "累計 GPA" }
+};
+
 // ---------------- Courses (NYCU) ----------------
 
 const COURSE_TERMS = [
