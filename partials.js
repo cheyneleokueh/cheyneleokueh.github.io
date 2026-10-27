@@ -4,12 +4,10 @@
 
 const PAGES = [
   { id: "about", label: "About", num: "01", href: "index.html" },
-  { id: "publications", label: "Publications", num: "02", href: "publications.html" },
-  { id: "open-source", label: "Open Source", num: "03", href: "open-source.html" },
-  { id: "experience", label: "Experience", num: "04", href: "experience.html" },
-  { id: "courses", label: "Courses", num: "05", href: "courses.html" },
-  { id: "nz", label: "NZ", num: "06", href: "nz.html" },
-  { id: "other", label: "Other", num: "07", href: "other.html" }
+  { id: "experience", label: "Experience", num: "02", href: "experience.html" },
+  { id: "courses", label: "Courses", num: "03", href: "courses.html" },
+  { id: "nz", label: "NZ", num: "04", href: "nz.html" },
+  { id: "other", label: "Other", num: "05", href: "other.html" }
 ];
 
 function renderNav(activeId) {

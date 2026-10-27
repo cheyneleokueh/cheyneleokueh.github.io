@@ -128,33 +128,6 @@ function renderExperience() {
   paint();
 }
 
-function renderPublications() {
-  const el = document.getElementById("pubFeed");
-  if (!el || typeof PUBLICATIONS === "undefined") return;
-  el.innerHTML = PUBLICATIONS.map(p => `
-    <li class="exp-item">
-      <div class="exp-main">
-        <div class="exp-top">
-          <h3 class="exp-title">${p.title}</h3>
-          <span class="exp-period">${p.period}</span>
-        </div>
-        <p class="exp-org">${p.venue}</p>
-        <ul class="exp-bullets">${p.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
-      </div>
-    </li>`).join("");
-}
-
-function renderOpenSource() {
-  const el = document.getElementById("osGrid");
-  if (!el || typeof OPEN_SOURCE === "undefined") return;
-  el.innerHTML = OPEN_SOURCE.map(p => `
-    <div class="os-card">
-      <span class="os-tag">${p.tag}</span>
-      <h3>${p.title}</h3>
-      <p>${p.bullets[0]}</p>
-    </div>`).join("");
-}
-
 function renderNZ() {
   const introEl = document.getElementById("nzIntro");
   const bodyEl = document.getElementById("nzBody");
@@ -225,8 +198,6 @@ initChrome(document.body.dataset.page);
 renderHeroStats();
 renderCourses();
 renderExperience();
-renderPublications();
-renderOpenSource();
 renderNZ();
 renderOther();
 

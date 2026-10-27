@@ -233,7 +233,7 @@ const COURSE_TERMS = [
         "teacher": "科特林（英授）",
         "cool": 4,
         "sweet": 4,
-        "grade": "C+",
+        "grade": "B-",
         "content": "積分技巧延伸與瑕積分、無窮級數與序列、級數與泰勒級數、偏導數與多變數函數極值、多重積分（二重與三重積分、座標變換）。",
         "method": "每週四小時授課。上課前每次都小考，接續用黑板寫板書上課。",
         "grading": "小考 35%（20取14次平均）、期中考 35%（兩次平均）、大會考 30%。〔不調分〕",
@@ -425,6 +425,16 @@ const COURSE_TERMS = [
 
 const EXPERIENCE = [
   {
+    "title": "會長 · SPIE Student Chapter",
+    "org": "SPIE NYCU Student Chapter · 國立陽明交通大學",
+    "period": "115-1 – 現在",
+    "tag": "leadership",
+    "active": true,
+    "bullets": [
+      "擔任 SPIE（國際光學與光子學學會）交大學生分會會長，統籌分會運作與活動"
+    ]
+  },
+  {
     "title": "Undergraduate Researcher",
     "org": "陳方中 Lab · NYCU 光電工程學系",
     "period": "114-1 – 現在",
@@ -543,13 +553,13 @@ const EXPERIENCE = [
     ]
   },
   {
-    "title": "潛水 Open Water 考照",
+    "title": "潛水 Open Water 證照",
     "org": "PADI",
-    "period": "計畫 2026/08",
-    "tag": "future",
+    "period": "2026/08",
+    "tag": "learning",
     "active": false,
     "bullets": [
-      "計畫考取 PADI Open Water 潛水證照"
+      "取得 PADI Open Water 潛水證照"
     ]
   },
   {
@@ -689,27 +699,27 @@ const NZ = {
   ],
   "uoa": {
     "heading": "University of Auckland",
-    "intro": "Started a semester of Engineering at the University of Auckland before deciding to transfer to NYCU. Course write-ups below are still thin — will fill these in properly when I get the time.",
+    "intro": "Started a semester of Engineering at the University of Auckland before deciding to transfer to NYCU.",
     "courses": [
       {
         "code": "ENGGEN 121",
         "name": "Engineering Mechanics",
-        "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+        "note": "Statics and dynamics for engineers: free body diagrams, equilibrium of particles and rigid bodies, trusses, friction, then kinematics and kinetics. The first course where physics turned into actually solving structures."
       },
       {
         "code": "ENGGEN 140",
         "name": "Fundamentals of Engineering in Society",
-        "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+        "note": "Chemistry and biology applied to basic engineering problems, alongside the social side of the job: the environment, Te Tiriti o Waitangi, and what a social licence to operate means for engineers."
       },
       {
         "code": "ENGSCI 111",
         "name": "Mathematical Modelling 1",
-        "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+        "note": "Engineering maths with a modelling focus: differentiation and integration techniques, differential equations including Euler's method, vectors and matrices, and probability models."
       },
       {
         "code": "WTRENG",
         "name": "Built Environment in Aotearoa New Zealand",
-        "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+        "note": "How the built environment in Aotearoa is shaped by its land, people and history — a look at infrastructure and design from a New Zealand perspective, including Māori viewpoints."
       }
     ]
   },
