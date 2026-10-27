@@ -37,14 +37,14 @@ const QUESTS = {
     { "label": "修業", "value": 70.3, "note": "90 / 128 畢業學分，學分超前" },
     { "label": "專題研究", "value": 45, "note": "陳方中 Lab，專題（三）進行中" },
     { "label": "社團與行政", "value": 100, "note": "SPIE 會長、學生會、班代、系羽 — 早就過關" },
-    { "label": "外語", "value": 60, "note": "中英母語、JLPT N3，朝 N2" },
+    { "label": "外語", "value": 60, "note": "中英母語、多益 960、BESTEP 菁英二獎、JLPT N3" },
     { "label": "自學", "value": 65, "note": "臺大 OCW 8 門、Google Cloud 8 徽章" },
     { "label": "實習與職涯", "value": 10, "note": "還沒開始" },
     { "label": "愛情", "value": 37.5, "note": "剛好壓在線上" },
     { "label": "運動", "value": 60, "note": "系羽隊長、網球課" },
     { "label": "證照與冒險", "value": 50, "note": "PADI Open Water ✓，滑雪 Level 1 目標 2027" },
     { "label": "國際交流", "value": 30, "note": "國際處學生代表；交換還沒" },
-    { "label": "打工與家教", "value": 50, "note": "家教進行中" }
+    { "label": "打工與家教", "value": 50, "note": "家教進行中、自編講義 6 冊 400 頁" }
   ],
   "gpa": { "value": 3.72, "max": 4.3, "note": "累計 GPA" }
 };
@@ -741,6 +741,17 @@ const EXPERIENCE = [
     ]
   },
   {
+    "title": "英語檢定 · TOEIC 960 · BESTEP 菁英二獎",
+    "org": "自學",
+    "period": "115-1",
+    "tag": "learning",
+    "active": false,
+    "bullets": [
+      "多益 TOEIC 聽讀測驗 960 分",
+      "教育部培力英檢 BESTEP 菁英二獎"
+    ]
+  },
+  {
     "title": "日文檢定 JLPT N3",
     "org": "自學",
     "period": "114-1",
@@ -974,6 +985,17 @@ const OTHER = {
           "bullets": [
             "Tutoring Middle School ~ Highschool Students. Focus: English, Mathematics, Sciences, ICT."
           ]
+        },
+        {
+          "title": "自編講義 · 108 課綱",
+          "org": "Independent",
+          "period": "2026/10",
+          "bullets": [
+            "依 108 課綱自編家教講義，A4 排版、圖解全部自繪：國小全科 1 冊、國中 5 冊（語文、社會、數學、自然、附冊），共 6 冊 400 頁。",
+            "每個單元都有學習目標、觀念圖解、口訣、常見錯誤、例題、基礎／進階／挑戰三級練習與詳解，以及專業延伸與教學提示。",
+            "國中冊加入自己的專長：語文冊含基礎日文、社會冊收錄 20 頁法律與管理專長篇、自然冊收錄光電專長延伸篇。",
+            "下一步：高中數學、物理、英文與程式（APCS），之後是大學英文。"
+          ]
         }
       ]
     },
@@ -982,11 +1004,14 @@ const OTHER = {
       "subtitle": "法律",
       "items": [
         {
-          "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          "org": "",
-          "period": "",
+          "title": "從自學到修課",
+          "org": "自學 · 暑修 · 科法所",
+          "period": "113-2 – 現在",
           "bullets": [
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+            "對法律的興趣，是想弄懂社會怎麼運作：制度怎麼設計、爭議怎麼解決，以及科技往前跑的時候，規範要怎麼跟上。",
+            "從臺大 OCW 開始自學：中華民國憲法及政府（湯德宗）、民法總則（陳聰富）、刑法總則（王皇玉）。",
+            "114 暑修民法總則（A）與刑法總則（A+）。",
+            "115-1 修科法所三門課：企業金融法、國際經濟法與國家安全、國際航空與太空法。光電背景讓我特別在意科技、產業和國際規範交會的地方。"
           ]
         }
       ]
@@ -996,11 +1021,12 @@ const OTHER = {
       "subtitle": "醫學",
       "items": [
         {
-          "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          "org": "",
-          "period": "",
+          "title": "EMT-1 · EMT-2 緊急救護技術員",
+          "org": "目標",
+          "period": "研究所畢業前",
           "bullets": [
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+            "對急救與緊急醫療有興趣，計畫在研究所畢業前依序取得 EMT-1（初級救護技術員）與 EMT-2（中級救護技術員）。",
+            "EMT-1 訓練約 40 小時，EMT-2 約 280 小時，會配合課業與研究排時間。"
           ]
         }
       ]
