@@ -40,13 +40,8 @@ function renderQuests() {
       <span><i class="legend-baseline"></i>${QUESTS.baselineLabel}</span>
       <span class="quest-legend-end">100% = 大四畢業</span>
     </div>
-    ${QUESTS.groups.map(grp => `
-      <div class="quest-group">
-        <h3>${grp.heading}</h3>
-        ${grp.items.map(q => questRowHTML(q.label, q.note, q.value, q.value >= 100 ? "過關" : `${q.value}%`, b)).join("")}
-      </div>`).join("")}
-    <div class="quest-group">
-      <h3>GPA</h3>
+    <div class="quest-grid">
+      ${QUESTS.items.map(q => questRowHTML(q.label, q.note, q.value, q.value >= 100 ? "過關" : `${q.value}%`, b)).join("")}
       ${questRowHTML("GPA", g.note, g.value / g.max * 100, `${g.value.toFixed(2)} / ${g.max}`, null)}
     </div>`;
 }
