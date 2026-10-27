@@ -12,6 +12,7 @@ function renderHeroStats() {
 }
 
 function starRow(n) {
+  if (n == null) return '<span class="course-ratings-empty">尚未評分</span>';
   if (n === 0) return '<span class="course-ratings-empty">零學分</span>';
   let out = "";
   for (let i = 0; i < 5; i++) {
