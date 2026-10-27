@@ -6,14 +6,14 @@ const LOREM_SHORT = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
 const HERO_STATS = [
   {
-    "value": "26",
+    "value": "43",
     "label": "課程記錄",
-    "note": "114-1 · 114-2 修課心得"
+    "note": "大一三個學期 + 大二上進行中"
   },
   {
-    "value": "7",
+    "value": "8",
     "label": "系上與校級職務",
-    "note": "班代、系羽隊長、學生會…"
+    "note": "SPIE 會長、班代、系羽隊長…"
   },
   {
     "value": "N3",
@@ -397,7 +397,7 @@ const COURSE_TERMS = [
         "teacher": "",
         "cool": 4,
         "sweet": 4,
-        "grade": "",
+        "grade": "A",
         "content": "",
         "method": "",
         "grading": "",
@@ -410,7 +410,7 @@ const COURSE_TERMS = [
         "teacher": "",
         "cool": 4,
         "sweet": 5,
-        "grade": "",
+        "grade": "A+",
         "content": "",
         "method": "",
         "grading": "",
