@@ -103,7 +103,12 @@ function renderCourses() {
       <p class="term-period">${term.period}</p>
       <div class="course-grid">
         ${term.courses.map(courseCardHTML).join("")}
-      </div>`;
+      </div>
+      ${term.selfStudy && term.selfStudy.length ? `
+        <div class="self-study">
+          <h4>自學 · 臺大 OCW</h4>
+          <ul>${term.selfStudy.map(c => `<li>${c.name}<span>${c.teacher}</span></li>`).join("")}</ul>
+        </div>` : ""}`;
 
     tabsEl.querySelectorAll(".term-tab").forEach(btn => {
       btn.addEventListener("click", () => {

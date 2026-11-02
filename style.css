@@ -866,3 +866,37 @@ a { color: inherit; }
   font-size: 0.8rem;
   color: var(--text-muted);
 }
+
+/* Self-study list under each term (Courses page) */
+.self-study {
+  margin-top: 28px;
+  padding: 16px 20px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  color: var(--text-muted);
+}
+
+.self-study h4 {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-family: var(--mono);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.self-study ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6px 24px;
+  font-size: 0.9rem;
+}
+
+.self-study li span {
+  margin-left: 8px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}

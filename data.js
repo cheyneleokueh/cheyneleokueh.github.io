@@ -38,7 +38,7 @@ const QUESTS = {
     { "label": "專題研究", "value": 45, "note": "陳方中 Lab，專題（三）進行中" },
     { "label": "社團與行政", "value": 100, "note": "SPIE 會長、學生會、班代、系羽 — 早就過關" },
     { "label": "外語", "value": 60, "note": "中英母語、多益 960、BESTEP 菁英二獎、JLPT N3" },
-    { "label": "自學", "value": 65, "note": "臺大 OCW 8 門、Google Cloud 8 徽章" },
+    { "label": "自學", "value": 65, "note": "臺大 OCW 11 門、Google Cloud 8 徽章" },
     { "label": "實習與職涯", "value": 10, "note": "還沒開始" },
     { "label": "愛情", "value": 37.5, "note": "剛好壓在線上" },
     { "label": "運動", "value": 60, "note": "系羽隊長、網球課" },
@@ -57,6 +57,20 @@ const COURSE_TERMS = [
     "label": "114-1",
     "period": "2025 秋 · Fall 2025",
     "subtitle": "大一上",
+    "selfStudy": [
+      {
+        "name": "日本文化史",
+        "teacher": "徐興慶"
+      },
+      {
+        "name": "中華民國憲法及政府",
+        "teacher": "湯德宗"
+      },
+      {
+        "name": "哲學與人生",
+        "teacher": "傅佩榮"
+      }
+    ],
     "courses": [
       {
         "name": "化學 (一)",
@@ -221,6 +235,20 @@ const COURSE_TERMS = [
     "label": "114-2",
     "period": "2026 春 · Spring 2026",
     "subtitle": "大一下",
+    "selfStudy": [
+      {
+        "name": "普通心理學",
+        "teacher": "趙儀珊"
+      },
+      {
+        "name": "魏晉南北朝史",
+        "teacher": "甘懷真"
+      },
+      {
+        "name": "活用哲學",
+        "teacher": "苑舉正"
+      }
+    ],
     "courses": [
       {
         "name": "電路學",
@@ -411,6 +439,16 @@ const COURSE_TERMS = [
     "label": "114-3",
     "period": "2026 夏 · Summer 2026",
     "subtitle": "大一暑",
+    "selfStudy": [
+      {
+        "name": "民法總則",
+        "teacher": "陳聰富"
+      },
+      {
+        "name": "刑法總則",
+        "teacher": "王皇玉"
+      }
+    ],
     "courses": [
       {
         "name": "民法總則",
@@ -445,6 +483,20 @@ const COURSE_TERMS = [
     "label": "115-1",
     "period": "2026 秋 · Fall 2026",
     "subtitle": "大二上",
+    "selfStudy": [
+      {
+        "name": "青少年心理學",
+        "teacher": "雷庚玲"
+      },
+      {
+        "name": "食品營養與安全概論",
+        "teacher": "蕭寧馨"
+      },
+      {
+        "name": "哲學概論",
+        "teacher": "王榮麟"
+      }
+    ],
     "courses": [
       {
         "name": "電子學 (一)",
@@ -764,18 +816,16 @@ const EXPERIENCE = [
   {
     "title": "臺大 OpenCourseWare 自學筆記",
     "org": "自學",
-    "period": "113-2 – 115-1",
+    "period": "114-1 – 115-1",
     "tag": "learning",
     "active": true,
     "bullets": [
-      "日本文化史 — 徐興慶",
-      "中華民國憲法及政府 — 湯德宗",
-      "哲學與人生 — 傅佩榮",
-      "普通心理學 — 趙儀珊",
-      "魏晉南北朝史 — 甘懷真",
-      "活用哲學 — 苑舉正",
-      "民法總則 — 陳聰富",
-      "刑法總則 — 王皇玉"
+      "每學期在正課之外跟一到三門臺大 OCW，共 11 門；各學期清單放在修課心得頁。",
+      "法政：中華民國憲法及政府、民法總則、刑法總則",
+      "哲學：哲學與人生、活用哲學、哲學概論",
+      "心理：普通心理學、青少年心理學",
+      "歷史文化：日本文化史、魏晉南北朝史",
+      "其他：食品營養與安全概論"
     ]
   },
   {
