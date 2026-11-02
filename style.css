@@ -887,16 +887,11 @@ a { color: inherit; }
 
 .self-study ul {
   margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 6px 24px;
+  padding-left: 1.2em;
+  list-style: disc;
   font-size: 0.9rem;
 }
 
-.self-study li span {
-  margin-left: 8px;
-  font-size: 0.8rem;
-  opacity: 0.8;
-}
+.self-study li { margin: 3px 0; }
+
+.self-study li span::before { content: " — "; }
