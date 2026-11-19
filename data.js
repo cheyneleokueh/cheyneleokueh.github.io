@@ -40,11 +40,7 @@ const QUESTS = {
     { "label": "外語", "value": 60, "note": "中英母語、多益 960、BESTEP 菁英二獎、JLPT N3" },
     { "label": "自學", "value": 65, "note": "臺大 OCW 11 門、Google Cloud 8 徽章" },
     { "label": "實習與職涯", "value": 10, "note": "還沒開始" },
-    { "label": "愛情", "value": 37.5, "note": "剛好壓在線上" },
-    { "label": "運動", "value": 60, "note": "系羽隊長、網球課" },
-    { "label": "證照與冒險", "value": 50, "note": "PADI Open Water ✓，滑雪 Level 1 目標 2027" },
-    { "label": "國際交流", "value": 30, "note": "國際處學生代表；交換還沒" },
-    { "label": "打工與家教", "value": 50, "note": "家教進行中、自編講義 6 冊 400 頁" }
+    { "label": "運動", "value": 60, "note": "系羽隊長、網球課" }
   ],
   "gpa": { "value": 3.72, "max": 4.3, "note": "累計 GPA" }
 };
@@ -699,10 +695,12 @@ const COURSE_TERMS = [
 
 // ---------------- Experience (unified feed) ----------------
 // tag: "research" | "leadership" | "learning" | "future"
+// year: 學年 the role started (group heading); active: true = 目前, false = 過去
 
 const EXPERIENCE = [
   {
     "title": "會長 · SPIE Student Chapter",
+    "year": 115,
     "org": "SPIE NYCU Student Chapter · 國立陽明交通大學",
     "period": "115-1 – 現在",
     "tag": "leadership",
@@ -713,17 +711,20 @@ const EXPERIENCE = [
   },
   {
     "title": "Undergraduate Researcher",
+    "year": 114,
     "org": "陳方中 Lab · NYCU 光電工程學系",
     "period": "114-1 – 現在",
     "tag": "research",
     "active": true,
     "bullets": [
       "光電專題研究（一）（二）— 光譜吸收最佳化模擬研究",
-      "114-2：使用水下模擬光譜數據，參考老師提供之最佳轉化極限代碼分析其關聯性，期末於實驗室 meeting 報告成果"
+      "114-2：使用水下模擬光譜數據，參考老師提供之最佳轉化極限代碼分析其關聯性，期末於實驗室 meeting 報告成果",
+      "115-1：光電專題研究（三）— 鈣鈦礦太陽能電池的元件參數反推：以 drift-diffusion 模擬（OghmaNano）建立元件數位分身，用最佳化擬合與 conditional autoencoder 從量測 J–V 曲線反推載子壽命、遷移率、串並聯電阻等參數"
     ]
   },
   {
     "title": "學生會 交通分會 · 福利部 部長",
+    "year": 115,
     "org": "國立陽明交通大學學生會",
     "period": "115-1 – 現在",
     "tag": "leadership",
@@ -734,6 +735,7 @@ const EXPERIENCE = [
   },
   {
     "title": "學生代表",
+    "year": 115,
     "org": "國立陽明交通大學 國際處",
     "period": "115-1 – 現在",
     "tag": "leadership",
@@ -744,6 +746,7 @@ const EXPERIENCE = [
   },
   {
     "title": "學生會 交通分會 · 秘書部",
+    "year": 114,
     "org": "國立陽明交通大學學生會 · 選舉委員會",
     "period": "114-1 – 114-2",
     "tag": "leadership",
@@ -754,6 +757,7 @@ const EXPERIENCE = [
   },
   {
     "title": "副分會長 · 少數國家分會",
+    "year": 115,
     "org": "僑生聯誼會",
     "period": "115-1 – 現在",
     "tag": "leadership",
@@ -764,6 +768,7 @@ const EXPERIENCE = [
   },
   {
     "title": "系羽 隊長",
+    "year": 115,
     "org": "光電工程學系羽球隊",
     "period": "115-1 – 現在",
     "tag": "leadership",
@@ -774,6 +779,7 @@ const EXPERIENCE = [
   },
   {
     "title": "班代",
+    "year": 114,
     "org": "光電工程學系",
     "period": "114-1 – 現在",
     "tag": "leadership",
@@ -783,17 +789,19 @@ const EXPERIENCE = [
     ]
   },
   {
-    "title": "系學會 成員",
+    "title": "系學會 成員 · 公關組、系小編",
+    "year": 114,
     "org": "光電工程學系學生會",
     "period": "114-1 – 現在",
     "tag": "leadership",
     "active": true,
     "bullets": [
-      "參與系上活動的籌辦與推廣"
+      "公關組成員兼系小編，參與系上活動的籌辦與宣傳推廣"
     ]
   },
   {
     "title": "英語檢定 · TOEIC 960 · BESTEP 菁英二獎",
+    "year": 115,
     "org": "自學",
     "period": "115-1",
     "tag": "learning",
@@ -805,6 +813,7 @@ const EXPERIENCE = [
   },
   {
     "title": "日文檢定 JLPT N3",
+    "year": 114,
     "org": "自學",
     "period": "114-1",
     "tag": "learning",
@@ -814,22 +823,8 @@ const EXPERIENCE = [
     ]
   },
   {
-    "title": "臺大 OpenCourseWare 自學筆記",
-    "org": "自學",
-    "period": "114-1 – 115-1",
-    "tag": "learning",
-    "active": true,
-    "bullets": [
-      "每學期在正課之外跟一到三門臺大 OCW，共 11 門；各學期清單放在修課心得頁。",
-      "法政：中華民國憲法及政府、民法總則、刑法總則",
-      "哲學：哲學與人生、活用哲學、哲學概論",
-      "心理：普通心理學、青少年心理學",
-      "歷史文化：日本文化史、魏晉南北朝史",
-      "其他：食品營養與安全概論"
-    ]
-  },
-  {
     "title": "Google Cloud Skill Boost",
+    "year": 113,
     "org": "自學",
     "period": "2025/02 – 2025/08",
     "tag": "learning",
@@ -840,22 +835,13 @@ const EXPERIENCE = [
   },
   {
     "title": "潛水 Open Water 證照",
+    "year": 114,
     "org": "PADI",
     "period": "2026/08",
     "tag": "learning",
     "active": false,
     "bullets": [
       "取得 PADI Open Water 潛水證照"
-    ]
-  },
-  {
-    "title": "滑雪 Level 1",
-    "org": "自我精進",
-    "period": "計畫 2027",
-    "tag": "future",
-    "active": false,
-    "bullets": [
-      "目標於 2027 年前考取滑雪 Level 1 認證"
     ]
   }
 ];
@@ -1035,17 +1021,6 @@ const OTHER = {
           "bullets": [
             "Tutoring Middle School ~ Highschool Students. Focus: English, Mathematics, Sciences, ICT."
           ]
-        },
-        {
-          "title": "自編講義 · 108 課綱",
-          "org": "Independent",
-          "period": "2026/10",
-          "bullets": [
-            "依 108 課綱自編家教講義，A4 排版、圖解全部自繪：國小全科 1 冊、國中 5 冊（語文、社會、數學、自然、附冊），共 6 冊 400 頁。",
-            "每個單元都有學習目標、觀念圖解、口訣、常見錯誤、例題、基礎／進階／挑戰三級練習與詳解，以及專業延伸與教學提示。",
-            "國中冊加入自己的專長：語文冊含基礎日文、社會冊收錄 20 頁法律與管理專長篇、自然冊收錄光電專長延伸篇。",
-            "下一步：高中數學、物理、英文與程式（APCS），之後是大學英文。"
-          ]
         }
       ]
     },
@@ -1062,21 +1037,6 @@ const OTHER = {
             "從臺大 OCW 開始自學：中華民國憲法及政府（湯德宗）、民法總則（陳聰富）、刑法總則（王皇玉）。",
             "114 暑修民法總則（A）與刑法總則（A+）。",
             "115-1 修科法所三門課：企業金融法、國際經濟法與國家安全、國際航空與太空法。光電背景讓我特別在意科技、產業和國際規範交會的地方。"
-          ]
-        }
-      ]
-    },
-    {
-      "heading": "Medicine",
-      "subtitle": "醫學",
-      "items": [
-        {
-          "title": "EMT-1 · EMT-2 緊急救護技術員",
-          "org": "目標",
-          "period": "研究所畢業前",
-          "bullets": [
-            "對急救與緊急醫療有興趣，計畫在研究所畢業前依序取得 EMT-1（初級救護技術員）與 EMT-2（中級救護技術員）。",
-            "EMT-1 訓練約 40 小時，EMT-2 約 280 小時，會配合課業與研究排時間。"
           ]
         }
       ]

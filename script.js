@@ -121,7 +121,9 @@ function renderCourses() {
   paint();
 }
 
+const STATUS_LABELS = { current: "目前", past: "過去", all: "全部" };
 const TAG_LABELS = { all: "全部", research: "研究", leadership: "領導與服務", learning: "自學", future: "未來規劃" };
+const YEAR_LABELS = { 115: "115 學年 · 大二", 114: "114 學年 · 大一", 113: "113 學年 · 入學前" };
 
 function expItemHTML(e) {
   return `
@@ -148,21 +150,36 @@ function renderExperience() {
 
   if (noteEl && typeof EXPERIENCE_NOTE !== "undefined") noteEl.textContent = EXPERIENCE_NOTE;
 
-  let active = "all";
+  // only offer tags that have entries
+  const tags = Object.keys(TAG_LABELS).filter(k => k === "all" || EXPERIENCE.some(e => e.tag === k));
+  let status = "all";
+  let tag = "all";
+
+  function buttons(labels, keys, active, attr) {
+    return keys.map(k => `<button class="tag-filter" data-${attr}="${k}" aria-pressed="${k === active}">${labels[k]}</button>`).join("");
+  }
 
   function paint() {
-    filtersEl.innerHTML = Object.entries(TAG_LABELS).map(([key, label]) => `
-      <button class="tag-filter" data-tag="${key}" aria-pressed="${key === active}">${label}</button>
-    `).join("");
+    filtersEl.innerHTML = `
+      <div class="filter-row">${buttons(STATUS_LABELS, Object.keys(STATUS_LABELS), status, "status")}</div>
+      <div class="filter-row filter-row-sub">${buttons(TAG_LABELS, tags, tag, "tag")}</div>`;
 
-    const items = active === "all" ? EXPERIENCE : EXPERIENCE.filter(e => e.tag === active);
-    feedEl.innerHTML = items.map(expItemHTML).join("");
+    const items = EXPERIENCE.filter(e =>
+      (status === "all" || (status === "current") === !!e.active) &&
+      (tag === "all" || e.tag === tag));
 
-    filtersEl.querySelectorAll(".tag-filter").forEach(btn => {
-      btn.addEventListener("click", () => {
-        active = btn.dataset.tag;
-        paint();
-      });
+    const years = [...new Set(items.map(e => e.year))].sort((a, b) => b - a);
+    feedEl.innerHTML = items.length
+      ? years.map(y => `
+          <li class="exp-year">${YEAR_LABELS[y] || `${y} 學年`}</li>
+          ${items.filter(e => e.year === y).map(expItemHTML).join("")}`).join("")
+      : `<li class="exp-empty">這個分類目前沒有項目。</li>`;
+
+    filtersEl.querySelectorAll("[data-status]").forEach(btn => {
+      btn.addEventListener("click", () => { status = btn.dataset.status; paint(); });
+    });
+    filtersEl.querySelectorAll("[data-tag]").forEach(btn => {
+      btn.addEventListener("click", () => { tag = btn.dataset.tag; paint(); });
     });
   }
 

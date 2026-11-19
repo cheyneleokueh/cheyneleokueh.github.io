@@ -422,9 +422,38 @@ a { color: inherit; }
 /* Experience feed */
 .tag-filters {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 28px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 8px;
   flex-wrap: wrap;
+}
+
+.filter-row-sub .tag-filter {
+  font-size: 0.8rem;
+  padding: 5px 12px;
+}
+
+.exp-year {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  padding: 22px 0 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-year:first-child { padding-top: 0; }
+
+.exp-empty {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 18px 0;
 }
 
 .tag-filter {
