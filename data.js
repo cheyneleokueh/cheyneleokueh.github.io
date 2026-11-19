@@ -846,7 +846,7 @@ const EXPERIENCE = [
   }
 ];
 
-const EXPERIENCE_NOTE = "還有更多想嘗試的事，之後想到就會陸續補上這裡 — 大學才剛開始，慢慢來。";
+let EXPERIENCE_NOTE = "還有更多想嘗試的事，之後想到就會陸續補上這裡 — 大學才剛開始，慢慢來。";
 
 // ---------------- Publications ----------------
 
