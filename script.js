@@ -1,14 +1,91 @@
 // ---- Page rendering (see data.js for content, partials.js for nav/footer/theme) ----
 
-function renderHeroStats() {
-  const el = document.getElementById("heroStats");
-  if (!el || typeof HERO_STATS === "undefined") return;
-  el.innerHTML = HERO_STATS.map(s => `
-    <div class="stat-tile">
-      <span class="value">${s.value}</span>
-      <div class="label">${s.label}</div>
-      <div class="note">${s.note}</div>
-    </div>`).join("");
+// ---- Home: campaign map ----
+
+function initMap() {
+  const map = document.querySelector(".map");
+  if (!map) return;
+
+  // phones get a crop centred on the peninsula so the banners stay legible
+  const wide = map.getAttribute("viewBox");
+  const narrow = window.matchMedia("(max-width: 760px)");
+  const fit = () => map.setAttribute("viewBox", narrow.matches ? "500 420 660 495" : wide);
+  narrow.addEventListener("change", fit);
+  fit();
+  init3D();
+
+  // signature: hovering or focusing a banner marches a dotted route from the castle
+  map.querySelectorAll(".banner").forEach(b => {
+    const route = map.querySelector(`.route[data-route="${b.dataset.route}"]`);
+    const on = () => route?.classList.add("is-on");
+    const off = () => route?.classList.remove("is-on");
+    b.addEventListener("mouseenter", on);
+    b.addEventListener("focus", on);
+    b.addEventListener("mouseleave", off);
+    b.addEventListener("blur", off);
+  });
+}
+
+function webgl2() {
+  const gl = document.createElement("canvas").getContext("webgl2");
+  gl?.getExtension("WEBGL_lose_context")?.loseContext();  // free the probe context at once
+  return !!gl;
+}
+
+// the 3D village replaces the SVG map only where it will run well; everything else keeps the map
+function init3D() {
+  const host = document.querySelector(".hero-3d");
+  if (!host) return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const capable = window.matchMedia("(min-width: 761px) and (pointer: fine)").matches &&
+    !(navigator.connection && navigator.connection.saveData) &&
+    (navigator.hardwareConcurrency || 4) >= 4 &&
+    webgl2();
+  if (!capable) return;
+
+  Promise.all([
+    import("./assets/scene.js?v=202611222115"),
+    fetch("assets/scene-data.json?v=202611222125").then(r => r.json()),
+    document.fonts ? document.fonts.load('40px "Dela CJK"', "研光将語塾郷") : null
+  ]).then(([mod, data]) => {
+    host.hidden = false;
+    mod.start(host, data, { labels: host.querySelector(".labels3d"), reduced });
+    host.closest(".hero").classList.add("is-3d");
+  }).catch(() => { host.hidden = true; });  // CDN or WebGL failure: the SVG map stays
+}
+
+// first visit per session: the crest is stamped, then the fusuma doors part
+function initLoader() {
+  // skipped for reduced motion and for automated browsers (crawlers, screenshot tools)
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || navigator.webdriver) return;
+  try {
+    if (sessionStorage.getItem("seenLoader")) return;
+    sessionStorage.setItem("seenLoader", "1");
+  } catch (e) { return; }
+
+  const el = document.createElement("div");
+  el.className = "loader";
+  el.setAttribute("aria-hidden", "true");
+  el.innerHTML = `
+    <div class="loader-door left"></div>
+    <div class="loader-door right"></div>
+    <div class="loader-stamp">
+      <svg viewBox="0 0 48 48"><use href="#koru"/></svg>
+      <span>郭紹安</span>
+      <span class="loader-skip">${getLang() === "zh" ? "點擊略過" : "Click to skip"}</span>
+    </div>`;
+  document.body.appendChild(el);
+
+  let done = false;
+  const open = () => {
+    if (done) return;
+    done = true;
+    el.classList.add("is-open");
+    setTimeout(() => el.remove(), 950);
+  };
+  el.addEventListener("click", open);
+  document.addEventListener("keydown", open, { once: true });
+  setTimeout(open, 1100);
 }
 
 function questRowHTML(label, note, pct, valueText, baseline) {
@@ -63,7 +140,7 @@ function courseCardHTML(c) {
     <details class="course-card">
       <summary>
         <div class="course-card-top">
-          <h3>${c.name}</h3>
+          <h2>${c.name}</h2>
           <span class="course-grade">${c.grade}</span>
         </div>
         <div class="course-meta">
@@ -77,10 +154,10 @@ function courseCardHTML(c) {
         </div>
       </summary>
       <div class="course-body">
-        <div class="course-field"><h4>授課內容</h4><p>${c.content}</p></div>
-        <div class="course-field"><h4>上課方式</h4><p>${c.method}</p></div>
-        <div class="course-field"><h4>評分方式</h4><p>${c.grading}</p></div>
-        <div class="course-field"><h4>心得與評語</h4><p>${c.review}</p></div>
+        <div class="course-field"><h3>授課內容</h3><p>${c.content}</p></div>
+        <div class="course-field"><h3>上課方式</h3><p>${c.method}</p></div>
+        <div class="course-field"><h3>評分方式</h3><p>${c.grading}</p></div>
+        <div class="course-field"><h3>心得與評語</h3><p>${c.review}</p></div>
       </div>
     </details>`;
 }
@@ -106,7 +183,7 @@ function renderCourses() {
       </div>
       ${term.selfStudy && term.selfStudy.length ? `
         <div class="self-study">
-          <h4>自學 · 臺大 OCW</h4>
+          <h3>自學 · 臺大 OCW</h3>
           <ul>${term.selfStudy.map(c => `<li>${c.name}<span>${c.teacher}</span></li>`).join("")}</ul>
         </div>` : ""}`;
 
@@ -121,22 +198,30 @@ function renderCourses() {
   paint();
 }
 
-const STATUS_LABELS = { current: "目前", past: "過去", all: "全部" };
-const TAG_LABELS = { all: "全部", research: "研究", leadership: "領導與服務", learning: "自學", future: "未來規劃" };
-const YEAR_LABELS = { 115: "115 學年 · 大二", 114: "114 學年 · 大一", 113: "113 學年 · 入學前" };
+// [中文, English] pairs; the Experience page follows the language toggle
+const STATUS_LABELS = { current: ["目前", "Current"], past: ["過去", "Past"], all: ["全部", "All"] };
+const TAG_LABELS = { all: ["全部", "All"], research: ["研究", "Research"], leadership: ["領導與服務", "Leadership"], learning: ["自學", "Self-study"], future: ["未來規劃", "Planned"] };
+const YEAR_LABELS = { 115: ["115 學年 · 大二", "2026–27 · Year 2"], 114: ["114 學年 · 大一", "2025–26 · Year 1"], 113: ["113 學年 · 入學前", "2024–25 · Before NYCU"] };
+
+const pick = pair => pair[getLang() === "zh" ? 0 : 1];
 
 function expItemHTML(e) {
+  const en = getLang() === "en";
+  const title = en && e.titleEn ? e.titleEn : e.title;
+  const org = en && e.orgEn ? e.orgEn : e.org;
+  const period = en && e.periodEn ? e.periodEn : e.period;
+  const bullets = en && e.bulletsEn && e.bulletsEn.length ? e.bulletsEn : e.bullets;
   return `
     <li class="exp-item">
       <span class="exp-status ${e.active ? "is-active" : ""}"></span>
       <div class="exp-main">
         <div class="exp-top">
-          <h3 class="exp-title">${e.title}</h3>
-          <span class="exp-period">${e.period}</span>
+          <h2 class="exp-title">${title}</h2>
+          <span class="exp-period">${period}</span>
         </div>
-        <p class="exp-org">${e.org}</p>
+        <p class="exp-org">${org}</p>
         <ul class="exp-bullets">
-          ${e.bullets.map(b => `<li>${b}</li>`).join("")}
+          ${bullets.map(b => `<li>${b}</li>`).join("")}
         </ul>
       </div>
     </li>`;
@@ -148,18 +233,19 @@ function renderExperience() {
   const noteEl = document.getElementById("expNote");
   if (!filtersEl || !feedEl || typeof EXPERIENCE === "undefined") return;
 
-  if (noteEl && typeof EXPERIENCE_NOTE !== "undefined") noteEl.textContent = EXPERIENCE_NOTE;
-
   // only offer tags that have entries
   const tags = Object.keys(TAG_LABELS).filter(k => k === "all" || EXPERIENCE.some(e => e.tag === k));
   let status = "all";
   let tag = "all";
 
   function buttons(labels, keys, active, attr) {
-    return keys.map(k => `<button class="tag-filter" data-${attr}="${k}" aria-pressed="${k === active}">${labels[k]}</button>`).join("");
+    return keys.map(k => `<button class="tag-filter" data-${attr}="${k}" aria-pressed="${k === active}">${pick(labels[k])}</button>`).join("");
   }
 
   function paint() {
+    if (noteEl && typeof EXPERIENCE_NOTE !== "undefined") {
+      noteEl.textContent = getLang() === "en" && typeof EXPERIENCE_NOTE_EN !== "undefined" ? EXPERIENCE_NOTE_EN : EXPERIENCE_NOTE;
+    }
     filtersEl.innerHTML = `
       <div class="filter-row">${buttons(STATUS_LABELS, Object.keys(STATUS_LABELS), status, "status")}</div>
       <div class="filter-row filter-row-sub">${buttons(TAG_LABELS, tags, tag, "tag")}</div>`;
@@ -171,9 +257,9 @@ function renderExperience() {
     const years = [...new Set(items.map(e => e.year))].sort((a, b) => b - a);
     feedEl.innerHTML = items.length
       ? years.map(y => `
-          <li class="exp-year">${YEAR_LABELS[y] || `${y} 學年`}</li>
+          <li class="exp-year">${YEAR_LABELS[y] ? pick(YEAR_LABELS[y]) : `${y} 學年`}</li>
           ${items.filter(e => e.year === y).map(expItemHTML).join("")}`).join("")
-      : `<li class="exp-empty">這個分類目前沒有項目。</li>`;
+      : `<li class="exp-empty">${pick(["這個分類目前沒有項目。", "Nothing in this category yet."])}</li>`;
 
     filtersEl.querySelectorAll("[data-status]").forEach(btn => {
       btn.addEventListener("click", () => { status = btn.dataset.status; paint(); });
@@ -184,6 +270,7 @@ function renderExperience() {
   }
 
   paint();
+  document.addEventListener("langchange", paint);
 }
 
 function renderNZ() {
@@ -204,17 +291,17 @@ function renderNZ() {
     </div>
     ${NZ.sections.map(s => `
       <div class="hs-section">
-        <h3>${s.heading}</h3>
+        <h2>${s.heading}</h2>
         <ul>${s.items.map(i => `<li>${i}</li>`).join("")}</ul>
       </div>`).join("")}
     <div class="hs-section">
-      <h3>${NZ.uoa.heading}</h3>
-      <p style="color:var(--text-muted);font-size:0.92rem;margin:0 0 16px;">${NZ.uoa.intro}</p>
+      <h2>${NZ.uoa.heading}</h2>
+      <p class="hs-intro">${NZ.uoa.intro}</p>
       <div class="uoa-grid">
         ${NZ.uoa.courses.map(c => `
           <div class="uoa-card">
             <span class="code">${c.code}</span>
-            <h4>${c.name}</h4>
+            <h3>${c.name}</h3>
             <p>${c.note}</p>
           </div>`).join("")}
       </div>
@@ -230,7 +317,7 @@ function renderOther() {
   el.innerHTML = OTHER.sections.map(group => `
     <div class="other-group">
       <div class="other-group-heading">
-        <h3>${group.heading}</h3>
+        <h2>${group.heading}</h2>
         <span class="subtitle">${group.subtitle}</span>
       </div>
       <ol class="exp-feed">
@@ -253,11 +340,10 @@ function renderOther() {
 
 initChrome(document.body.dataset.page);
 
-renderHeroStats();
+initMap();
+if (document.body.dataset.page === "about") initLoader();
 renderQuests();
 renderCourses();
 renderExperience();
 renderNZ();
 renderOther();
-
-initRevealObserver();

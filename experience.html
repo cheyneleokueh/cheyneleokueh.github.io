@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,30 +7,34 @@
 <meta name="description" content="Cheyne Kueh — 研究、系上與校級事務、自學進度。">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=202611200125">
+<script>try{var l=localStorage.getItem("lang");if(l==="zh"){document.documentElement.dataset.lang="zh";document.documentElement.lang="zh-Hant"}var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="style.css?v=202611222115">
 </head>
 <body data-page="experience">
 
+<a class="skip" href="#main"><span data-l="en">Skip to content</span><span data-l="zh">跳到內容</span></a>
 <div id="nav-mount"></div>
 
-<main>
+<main id="main">
   <section class="section section-top">
     <div class="section-inner">
-      <p class="eyebrow reveal">02 · EXPERIENCE</p>
-      <h2 class="reveal">系上、校級與自學</h2>
-      <p class="section-sub reveal">研究、系上與校級事務、自學進度 — 由新到舊排列。</p>
+      <header class="page-head">
+        <span class="seal" aria-hidden="true">經</span>
+        <h1><span data-l="en">Experience</span><span data-l="zh">經歷</span></h1>
+      </header>
+      <p class="section-sub"><span data-l="en">Research, leadership and self-study, grouped by academic year. Filter by current or past, then by kind.</span><span data-l="zh">研究、系上與校級事務、自學，依學年分組。先選目前或過去，再選類別。</span></p>
 
-      <div class="tag-filters reveal" id="tagFilters"></div>
+      <div class="tag-filters" id="tagFilters"></div>
       <ol class="exp-feed" id="expFeed"></ol>
-      <p class="exp-note reveal" id="expNote"></p>
+      <p class="exp-note" id="expNote"></p>
     </div>
   </section>
 </main>
 
 <div id="footer-mount"></div>
 
-<script src="data.js?v=202611200125"></script>
-<script src="partials.js?v=202611200125"></script>
-<script src="script.js?v=202611200125"></script>
+<script src="data.js?v=202611222115"></script>
+<script src="partials.js?v=202611222115"></script>
+<script src="script.js?v=202611222115"></script>
 </body>
 </html>
