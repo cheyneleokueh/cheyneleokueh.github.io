@@ -1,4 +1,4 @@
-"""Print cv.html to assets/cv-cheyne-kueh.pdf (English, light theme), so the PDF always matches the page.
+"""Print cv-print.html (the CV's print source, not linked from the nav) to assets/cv-cheyne-kueh.pdf (English, light theme), so the PDF always matches the page.
 
 Serve the site first (python -m http.server 8765), then:  python tools/build_cv_pdf.py
 Uses Playwright with the installed Microsoft Edge.
@@ -11,7 +11,7 @@ from playwright.sync_api import sync_playwright
 
 root = pathlib.Path(__file__).resolve().parent.parent
 out = root / "assets" / "cv-cheyne-kueh.pdf"
-url = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8765/cv.html"
+url = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8765/cv-print.html"
 
 with sync_playwright() as p:
     browser = p.chromium.launch(channel="msedge", headless=True)

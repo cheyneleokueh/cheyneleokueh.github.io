@@ -15,8 +15,8 @@
 <link rel="preload" href="assets/fonts/shippori-mincho-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/shippori-mincho-700-kanji.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/img/hero-1200.webp" imagesrcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w, assets/img/hero-2000.webp 2000w" imagesizes="100vw">
-<link rel="stylesheet" href="style.css?v=202611235">
-<script>try{var l=localStorage.getItem("lang");if(l==="zh"){document.documentElement.dataset.lang="zh";document.documentElement.lang="zh-Hant"}var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="style.css?v=202611240">
+<script>try{var l=localStorage.getItem("lang");if(l==="zh"){document.documentElement.dataset.lang="zh";document.documentElement.lang="zh-Hant"}var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}try{if(!sessionStorage.getItem("seen")&&!navigator.webdriver&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("intro")}catch(e){}</script>
 </head>
 <body data-page="home">
 
@@ -32,107 +32,126 @@
       <div class="hero-copy">
         <h1 id="heroName">Cheyne Kueh<span class="visually-hidden" lang="zh-Hant"> 郭紹安</span></h1>
         <p class="lede">
-          <span data-l="en">Photonics student at NYCU. I simulate perovskite solar cells, and teach a neural network to read their J–V curves, in Prof. 陳方中's lab.</span>
+          <span data-l="en">Photonics student at NYCU. I simulate perovskite solar cells, and teach a neural network to read their J–V curves, in Prof. Fang-Chung Chen's lab.</span>
           <span data-l="zh">陽明交大光電系學生。在陳方中教授實驗室模擬鈣鈦礦太陽能電池，並訓練神經網路讀懂它們的 J–V 曲線。</span>
         </p>
         <div class="actions">
           <a class="btn btn-stamp" href="mailto:cheyneleokueh@gmail.com"><span data-l="en">Email me</span><span data-l="zh">寄信給我</span></a>
-          <a class="btn" href="cv.html">CV<span data-l="zh">（履歷）</span></a>
+          <a class="btn" href="assets/cv-cheyne-kueh.pdf" download><span data-l="en">CV (PDF)</span><span data-l="zh">履歷 PDF</span></a>
           <a class="btn" href="https://github.com/cheyneleokueh" rel="noopener">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/cheyne-kueh-a5b60b255/" rel="noopener">LinkedIn</a>
         </div>
         <p class="hero-note">
-          <span data-l="en">President of the SPIE NYCU Student Chapter. Raised in Auckland; I work in English, 中文 and 日本語.</span>
-          <span data-l="zh">SPIE 交大學生分會會長。在奧克蘭長大，用英文、中文和日文工作。</span>
+          <span data-l="en">President of the SPIE NYCU Student Chapter. Raised in Auckland; native English and 中文, with 日本語 at JLPT N3.</span>
+          <span data-l="zh">SPIE 交大學生分會會長。在奧克蘭長大；英文與中文為母語，日文 JLPT N3。</span>
         </p>
       </div>
     </div>
   </section>
 
-  <section class="section" id="research" aria-labelledby="h-research">
+  <section class="section highlights-section" id="highlights" aria-labelledby="h-highlights">
     <div class="wrap">
-      <header class="section-head">
-        <h2 id="h-research"><span data-l="en">Research</span><span data-l="zh">研究</span></h2>
-        <p><span data-l="en">Prof. Fang-Chung Chen's organic electronics lab, NYCU Photonics, since my first semester. Marked honestly, the way a Japanese teacher marks returned work.</span><span data-l="zh">大一上起於陳方中教授有機電子實驗室。照實批改，像日本老師改作業那樣。</span></p>
-      </header>
-
-      <ol class="record">
-        <li class="record-item">
-          <svg class="mark" role="img" aria-label="花丸: result"><use href="assets/marks.svg#m-hana"/></svg>
-          <div class="record-body">
-            <h3><span data-l="en">Shockley–Queisser limit simulation</span><span data-l="zh">Shockley–Queisser 極限模擬與最佳化</span></h3>
-            <p class="record-when"><span data-l="en">2025–26, Special Project I–II, presented at the lab meeting</span><span data-l="zh">2025–26，光電專題研究（一）（二），於實驗室 meeting 報告</span></p>
-            <p><span data-l="en">A detailed-balance optimiser, applied to simulated underwater spectra to see how depth changes the best achievable efficiency.</span><span data-l="zh">以細緻平衡極限建立最佳化工具，套用到水下模擬光譜，分析深度如何改變最佳轉換效率。</span></p>
-          </div>
-        </li>
-        <li class="record-item">
-          <svg class="mark" role="img" aria-label="In progress"><use href="assets/marks.svg#m-arc"/></svg>
-          <div class="record-body">
-            <h3><span data-l="en">A digital twin of a perovskite solar cell</span><span data-l="zh">鈣鈦礦太陽能電池的數位分身</span></h3>
-            <p class="record-when"><span data-l="en">2026, Special Project III, in progress</span><span data-l="zh">2026，光電專題研究（三），進行中</span></p>
-            <p><span data-l="en">Drift-diffusion simulation in OghmaNano, then two ways back from a measured J–V curve to device parameters: optimisation fitting, and a conditional autoencoder trained on 5,000 simulated devices.</span><span data-l="zh">以 OghmaNano 做 drift-diffusion 模擬，再用兩種方法從量測 J–V 曲線反推元件參數：最佳化擬合，以及用 5,000 顆模擬元件訓練的 conditional autoencoder。</span></p>
-            <p><a href="https://github.com/cheyneleokueh/perovskite-autoencoder-paper-simulation" rel="noopener"><span data-l="en">Public demo: the paper-trained model in the browser</span><span data-l="zh">公開展示：在瀏覽器裡跑論文模型</span></a></p>
-          </div>
-        </li>
-        <li class="record-item">
-          <svg class="mark" role="img" aria-label="△: partly"><use href="assets/marks.svg#m-tri"/></svg>
-          <div class="record-body">
-            <h3><span data-l="en">Carrier lifetime against shunt resistance</span><span data-l="zh">載子壽命與並聯電阻的拉鋸</span></h3>
-            <p class="record-when"><span data-l="en">2026, inconclusive</span><span data-l="zh">2026，尚無定論</span></p>
-            <p><span data-l="en">On one measured curve, several parameter sets fit equally well, and the autoencoder did not beat brute-force search. Dark J–V and light-intensity measurements are next.</span><span data-l="zh">只有一條量測曲線時，好幾組參數擬合得一樣好，autoencoder 也沒有贏過暴力搜尋。下一步是暗態 J–V 與不同光強的量測。</span></p>
-          </div>
-        </li>
-        <li class="record-item">
-          <svg class="mark mark-plan" role="img" aria-label="Planned"><use href="assets/marks.svg#m-plan"/></svg>
-          <div class="record-body">
-            <h3><span data-l="en">NSTC undergraduate research grant, then a five-year master's</span><span data-l="zh">國科會大專生研究計畫，接著五年碩</span></h3>
-            <p class="record-when"><span data-l="en">2027, planned</span><span data-l="zh">2027，規劃中</span></p>
-            <p><span data-l="en">A proposal to extend the digital twin into an efficiency optimiser, then NYCU's five-year master's track in the same lab.</span><span data-l="zh">把數位分身延伸成效率最佳化工具的計畫，之後是同實驗室的五年碩學程。</span></p>
-          </div>
-        </li>
-      </ol>
-
-      <p class="key" aria-label="Key to the marks">
-        <span><svg class="mark mark-sm" aria-hidden="true"><use href="assets/marks.svg#m-hana"/></svg><span data-l="en">花丸, a result</span><span data-l="zh">花丸：有成果</span></span>
-        <span><svg class="mark mark-sm" aria-hidden="true"><use href="assets/marks.svg#m-arc"/></svg><span data-l="en">still being drawn</span><span data-l="zh">還在畫：進行中</span></span>
-        <span><svg class="mark mark-sm" aria-hidden="true"><use href="assets/marks.svg#m-tri"/></svg><span data-l="en">partly</span><span data-l="zh">部分</span></span>
-        <span><svg class="mark mark-sm mark-plan" aria-hidden="true"><use href="assets/marks.svg#m-plan"/></svg><span data-l="en">pencil, planned</span><span data-l="zh">鉛筆：規劃中</span></span>
-      </p>
-      <p class="more"><a href="research.html"><span data-l="en">Methods and status for each project</span><span data-l="zh">每個專題的方法與進度</span></a></p>
+      <h2 id="h-highlights" class="visually-hidden"><span data-l="en">Highlights</span><span data-l="zh">重點摘要</span></h2>
+      <ul class="highlights">
+        <li><a href="research.html#twin"><strong data-count>5,000</strong><span><span data-l="en">simulated devices</span><span data-l="zh">顆模擬元件</span></span><small><span data-l="en">train the autoencoder that reads J–V curves</span><span data-l="zh">訓練讀取 J–V 曲線的 autoencoder</span></small></a></li>
+        <li><a href="#awards"><strong data-count>NT$1.04M</strong><span><span data-l="en">scholarship</span><span data-l="zh">獎學金</span></span><small><span data-l="en">Top Overseas Chinese Student Scholarship, 2025</span><span data-l="zh">頂尖僑生獎學金，2025</span></small></a></li>
+        <li><a href="experience.html#teaching"><strong data-count>80+</strong><span><span data-l="en">students taught</span><span data-l="zh">位學生</span></span><small><span data-l="en">English and maths, Auckland, two years</span><span data-l="zh">奧克蘭英文與數學，兩年</span></small></a></li>
+        <li><a href="#skills"><strong data-count>2</strong><span><span data-l="en">native languages</span><span data-l="zh">種母語</span></span><small><span data-l="en">English and 中文 at C2; 日本語 at JLPT N3</span><span data-l="zh">英文、中文 C2；日文 JLPT N3</span></small></a></li>
+      </ul>
     </div>
   </section>
 
-  <section class="section" id="leadership" aria-labelledby="h-leadership">
+  <section class="section section-short" id="recent" aria-labelledby="h-recent">
     <div class="wrap">
       <header class="section-head">
-        <h2 id="h-leadership"><span data-l="en">Leadership</span><span data-l="zh">領導與服務</span></h2>
+        <h2 id="h-recent"><span data-l="en">Recent</span><span data-l="zh">近況</span></h2>
       </header>
-      <div class="lead-grid">
-        <div class="feature">
-          <h3><span data-l="en">President, SPIE NYCU Student Chapter</span><span data-l="zh">SPIE 交大學生分會 會長</span></h3>
-          <p><span data-l="en">Elected by the members as the Chen lab's representative. The chapter links students scattered across NYCU's photonics labs to SPIE: technical talks, visits from industry and alumni, and help with conference submissions and student grants.</span><span data-l="zh">以陳方中實驗室代表身分參選，由會員選出。分會把散在各實驗室的學生串起來，連結 SPIE 的資源：技術講座、業界與校友分享、協助投稿國際研討會與申請學生獎助。</span></p>
-          <p class="more"><a href="cv.html#leadership"><span data-l="en">Every role, by year, on the CV</span><span data-l="zh">所有職務，見履歷</span></a></p>
-        </div>
-        <ul class="roles">
-          <li><span><span data-l="en">Welfare Minister</span><span data-l="zh">福利部部長</span><small><span data-l="en">NYCU Student Association</span><span data-l="zh">陽明交大學生會</span></small></span><span>2026–</span></li>
-          <li><span><span data-l="en">Student Representative</span><span data-l="zh">學生代表</span><small><span data-l="en">Office of International Affairs</span><span data-l="zh">國際處</span></small></span><span>2026–</span></li>
-          <li><span><span data-l="en">Vice-chair, minority-countries branch</span><span data-l="zh">少數國家分會 副分會長</span><small><span data-l="en">Overseas Chinese Students' Association</span><span data-l="zh">僑生聯誼會</span></small></span><span>2026–</span></li>
-          <li><span><span data-l="en">Class representative</span><span data-l="zh">班代</span><small><span data-l="en">NYCU Photonics</span><span data-l="zh">光電系</span></small></span><span>2025–</span></li>
-        </ul>
+      <ol class="recent" data-todo="Confirm the month for each item, and add new ones at the top (newest first). Keep 3 to 5 items.">
+        <li><span class="recent-when"><span data-l="en">Spring 2026</span><span data-l="zh">2026 春</span></span><span><span data-l="en">Presented Shockley–Queisser limits under simulated underwater spectra at the Chen lab meeting.</span><span data-l="zh">於陳方中實驗室 meeting 報告水下模擬光譜的 Shockley–Queisser 極限。</span></span></li>
+        <li><span class="recent-when">2026</span><span><span data-l="en">Elected President of the SPIE NYCU Student Chapter.</span><span data-l="zh">當選 SPIE 交大學生分會會長。</span></span></li>
+        <li><span class="recent-when">2026</span><span><span data-l="en">Started a digital twin of a perovskite cell, Special Project III.</span><span data-l="zh">開始光電專題研究（三）：鈣鈦礦電池的數位分身。</span></span></li>
+        <li><span class="recent-when">2025</span><span><span data-l="en">Moved to NYCU Photonics on the Top Overseas Chinese Student Scholarship, and joined Prof. Chen's lab in the first semester.</span><span data-l="zh">獲頂尖僑生獎學金轉入陽明交大光電系，大一上加入陳方中教授實驗室。</span></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="h-about">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="h-about"><span data-l="en">About</span><span data-l="zh">關於我</span></h2>
+      </header>
+      <div class="prose about">
+        <p><span data-l="en">I study Photonics Engineering at NYCU and have worked in Prof. Fang-Chung Chen's organic electronics lab since my first semester. My projects run from detailed-balance limits under underwater light to a digital twin of a perovskite solar cell: drift-diffusion simulation, then a neural network that reads device parameters back from a measured J–V curve.</span><span data-l="zh">我就讀陽明交大光電工程學系，大一上起在陳方中教授的有機電子實驗室做研究。專題從水下光譜的細緻平衡極限，做到鈣鈦礦太陽能電池的數位分身：先做 drift-diffusion 模擬，再用神經網路從量測 J–V 曲線反推元件參數。</span></p>
+        <p><span data-l="en">Outside the lab I lead the SPIE NYCU Student Chapter and serve as Welfare Minister in the Student Association. I grew up in Auckland, taught there for two years, and now tutor in Taiwan.</span><span data-l="zh">實驗室之外，我是 SPIE 交大學生分會會長，也擔任學生會福利部部長。我在奧克蘭長大，在那裡教了兩年書，現在在台灣當家教。</span></p>
+        <p><span data-l="en">Away from both, I read law (summer courses in civil and criminal law, and three courses at NYCU's Institute of Technology Law in fall 2026), swim, play badminton and ski, and hold a PADI Open Water Diver certificate. I played piano from age 4 to 15, then saxophone and taiko.</span><span data-l="zh">其他時間，我讀法律（暑修民法總則與刑法總則，2026 秋季修讀科技法律研究所三門課）、游泳、打羽球、滑雪，並有 PADI Open Water 潛水證照。4 至 15 歲學鋼琴，之後學薩克斯風與太鼓。</span></p>
+        <p class="more"><a href="research.html"><span data-l="en">Research, project by project</span><span data-l="zh">逐一看研究專題</span></a> &nbsp; <a href="experience.html"><span data-l="en">Leadership and teaching</span><span data-l="zh">領導與教學</span></a></p>
       </div>
     </div>
   </section>
 
   <section class="section" id="education" aria-labelledby="h-education">
     <div class="wrap">
-      <h2 id="h-education" class="visually-hidden"><span data-l="en">Education and languages</span><span data-l="zh">學歷與語言</span></h2>
-      <div class="two-col">
+      <header class="section-head">
+        <h2 id="h-education"><span data-l="en">Education</span><span data-l="zh">學歷</span></h2>
+      </header>
+        <ol class="rows">
+          <li class="row">
+            <div class="row-main">
+              <h3 class="row-title"><span data-l="en">BSc Photonics Engineering, National Yang Ming Chiao Tung University</span><span data-l="zh">國立陽明交通大學 光電工程學系</span></h3>
+              <p class="row-note"><span data-l="en">GPA 3.72 / 4.30 (first year, including summer session). Top Overseas Chinese Student Scholarship. Technology-law module and IMBA credit programme alongside the degree.</span><span data-l="zh">GPA 3.72 / 4.30（大一，含暑修）。獲頂尖僑生獎學金。同時修讀科技法律跨域學程與 IMBA 學分學程。</span></p>
+            </div>
+            <span class="row-when"><svg class="mark mark-sm" aria-hidden="true"><use href="assets/marks.svg#m-arc"/></svg>2025–</span>
+          </li>
+          <li class="row">
+            <div class="row-main">
+              <h3 class="row-title"><span data-l="en">Engineering, University of Auckland</span><span data-l="zh">奧克蘭大學 工程學院</span></h3>
+              <p class="row-note"><span data-l="en">One semester, then transferred to NYCU on the scholarship above.</span><span data-l="zh">就讀一學期後，獲上述獎學金轉回陽明交大。</span></p>
+            </div>
+            <span class="row-when">2025/03–2025/07</span>
+          </li>
+          <li class="row">
+            <div class="row-main">
+              <h3 class="row-title"><span data-l="en">Cambridge IGCSE and A-Level, ACG Sunderland, Auckland</span><span data-l="zh">劍橋 IGCSE 與 A-Level，ACG Sunderland（奧克蘭）</span></h3>
+              <p class="row-note"><span data-l="en">330 UCAS points; early offer into Engineering (Honours) at the University of Auckland.</span><span data-l="zh">UCAS 330 分；提前獲奧克蘭大學工程（榮譽）學位錄取。</span></p>
+            </div>
+            <span class="row-when">2019–2024</span>
+          </li>
+        </ol>
+    </div>
+  </section>
+
+  <section class="section" id="awards" aria-labelledby="h-awards">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="h-awards"><span data-l="en">Awards and scholarships</span><span data-l="zh">獎項與獎學金</span></h2>
+      </header>
+        <ol class="rows">
+          <li class="row">
+            <div class="row-main"><h3 class="row-title"><span data-l="en">Top Overseas Chinese Student Scholarship, NYCU (NT$1.04M)</span><span data-l="zh">頂尖僑生獎學金，陽明交大（新台幣 104 萬元）</span></h3></div>
+            <span class="row-when">2025</span>
+          </li>
+          <li class="row">
+            <div class="row-main"><h3 class="row-title"><span data-l="en">NZ Chemistry Olympiad, silver certificate</span><span data-l="zh">紐西蘭化學奧林匹亞，銀牌證書</span></h3></div>
+            <span class="row-when">2018</span>
+          </li>
+        </ol>
+    </div>
+  </section>
+
+  <section class="section" id="skills" aria-labelledby="h-skills">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="h-skills"><span data-l="en">Skills and languages</span><span data-l="zh">技能與語言</span></h2>
+      </header>
+      <div class="two-col skills-col">
         <div>
-          <h3><span data-l="en">Education</span><span data-l="zh">學歷</span></h3>
-          <dl class="facts">
-            <div><dt><span data-l="en">NYCU, Photonics Engineering</span><span data-l="zh">陽明交大 光電工程學系</span></dt><dd><span data-l="en">2025 to now. GPA 3.72 / 4.30 (first year, including summer session), on the Top Overseas Chinese Student Scholarship, with the technology-law module and the IMBA credit programme.</span><span data-l="zh">2025 至今。GPA 3.72 / 4.30（大一，含暑修），獲頂尖僑生獎學金，並修科技法律跨域學程與 IMBA 學分學程。</span></dd></div>
-            <div><dt><span data-l="en">University of Auckland, Engineering</span><span data-l="zh">奧克蘭大學 工程學院</span></dt><dd><span data-l="en">One semester, 2025, before transferring to NYCU.</span><span data-l="zh">2025 年就讀一學期後轉回陽明交大。</span></dd></div>
-            <div><dt>ACG Sunderland, Auckland</dt><dd><span data-l="en">Cambridge IGCSE and A-Level, 2019–2024. House leader; NZ Chemistry Olympiad silver certificate.</span><span data-l="zh">劍橋 IGCSE 與 A-Level，2019–2024。學院院長；紐西蘭化學奧林匹亞銀牌證書。</span></dd></div>
+          <h3><span data-l="en">Skills</span><span data-l="zh">技能</span></h3>
+          <dl class="skills">
+      <div><dt><span data-l="en">Simulation &amp; analysis</span><span data-l="zh">模擬與分析</span></dt><dd>OghmaNano (drift-diffusion), MATLAB, LTspice</dd></div>
+      <div><dt><span data-l="en">Programming</span><span data-l="zh">程式</span></dt><dd>Python, C++, Java, R, SQL, JavaScript, HTML/CSS</dd></div>
+      <div><dt><span data-l="en">AI &amp; cloud</span><span data-l="zh">AI 與雲端</span></dt><dd><span data-l="en">Google Cloud Skills Boost, 8 badges: Vertex AI, Gemini API, BigQuery ML, multimodal RAG and others</span><span data-l="zh">Google Cloud Skills Boost 8 個徽章：Vertex AI、Gemini API、BigQuery ML、Multimodal RAG 等</span></dd></div>
+      <div><dt><span data-l="en">Visual &amp; media</span><span data-l="zh">視覺與媒體</span></dt><dd>Blender, Unreal Engine, Adobe Premiere, After Effects, Photoshop, Illustrator, Lightroom, Audition</dd></div>
+      <div><dt><span data-l="en">Interpretation</span><span data-l="zh">口譯</span></dt><dd><span data-l="en">Live English–Chinese interpretation and translation</span><span data-l="zh">中英即時口譯與翻譯</span></dd></div>
           </dl>
         </div>
         <div>
@@ -147,24 +166,14 @@
     </div>
   </section>
 
-  <section class="section section-short" id="teaching" aria-labelledby="h-teaching">
-    <div class="wrap">
-      <header class="section-head">
-        <h2 id="h-teaching"><span data-l="en">Teaching</span><span data-l="zh">教學</span></h2>
-      </header>
-      <div class="prose">
-        <p><span data-l="en">Two years teaching English and Maths at NumberWorks'nWords in Henderson, Auckland, one-to-one and in small groups, for more than 80 students. In Taiwan I tutor privately: English, maths and the sciences, from middle school to high school, in English or Chinese.</span><span data-l="zh">在奧克蘭 Henderson 的 NumberWorks'nWords 教英文與數學兩年，一對一與小班，學生超過 80 位。在台灣持續私人家教：國中到高中的英文、數學與自然，中英文授課。</span></p>
-      </div>
-    </div>
-  </section>
-
   <section class="section close" id="contact" aria-labelledby="h-contact">
     <div class="wrap">
       <h2 id="h-contact"><span data-l="en">Contact</span><span data-l="zh">聯絡</span></h2>
-      <p><span data-l="en">For research, internships or SPIE chapter matters, email is fastest. The CV page prints cleanly to PDF.</span><span data-l="zh">研究、實習或 SPIE 分會的事，寄信最快。履歷頁面可直接列印成 PDF。</span></p>
+      <p><span data-l="en">For research, internships or SPIE chapter matters, email is fastest. The CV is a two-page PDF.</span><span data-l="zh">研究、實習或 SPIE 分會的事，寄信最快。履歷為兩頁 PDF。</span></p>
+      <p class="seeking" data-todo="Say what you are looking for and when: e.g. a summer research internship (which year), the Japan exchange, the five-year master's."><span data-l="en">Currently: undergraduate research in Prof. Chen's lab, and open to conversations about photonics research.</span><span data-l="zh">目前：在陳方中教授實驗室做大學部研究，歡迎聊光電相關研究。</span></p>
       <div class="actions">
         <a class="btn btn-stamp" href="mailto:cheyneleokueh@gmail.com">cheyneleokueh@gmail.com</a>
-        <a class="btn" href="cv.html">CV<span data-l="zh">（履歷）</span></a>
+        <a class="btn" href="assets/cv-cheyne-kueh.pdf" download><span data-l="en">CV (PDF)</span><span data-l="zh">履歷 PDF</span></a>
         <a class="btn" href="https://www.linkedin.com/in/cheyne-kueh-a5b60b255/" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://github.com/cheyneleokueh" rel="noopener">GitHub</a>
       </div>
@@ -175,7 +184,7 @@
 
 <div id="footer-mount"></div>
 
-<script src="partials.js?v=202611235"></script>
-<script src="script.js?v=202611235"></script>
+<script src="partials.js?v=202611240"></script>
+<script src="script.js?v=202611240"></script>
 </body>
 </html>

@@ -2,14 +2,12 @@
 // Each page calls initChrome("pageId") once, after <div id="nav-mount"></div> and
 // <div id="footer-mount"></div> exist in the DOM.
 
-// pages, plus jump links to home sections (they always go to the home page)
+// one link per page; contact lives in the hero, at the end of About, and in every footer
 const PAGES = [
+  { id: "home", en: "About", zh: "關於", href: "index.html" },
   { id: "research", en: "Research", zh: "研究", href: "research.html" },
-  { id: "leadership", en: "Leadership", zh: "領導", href: "index.html#leadership" },
-  { id: "teaching", en: "Teaching", zh: "教學", href: "index.html#teaching" },
-  { id: "cv", en: "CV", zh: "履歷", href: "cv.html" },
-  { id: "courses", en: "Course reviews", zh: "修課心得", href: "courses.html" },
-  { id: "contact", en: "Contact", zh: "聯絡", href: "index.html#contact" }
+  { id: "experience", en: "Experience", zh: "經歷", href: "experience.html" },
+  { id: "courses", en: "Courses", zh: "課程", href: "courses.html" }
 ];
 
 function bi(en, zh) {
@@ -61,7 +59,9 @@ function renderFooter() {
   el.outerHTML = `
     <footer class="footer">
       <div class="wrap">
-        <p>&copy; <span id="year"></span> Cheyne Kueh 郭紹安</p>
+        <p><a href="mailto:cheyneleokueh@gmail.com">cheyneleokueh@gmail.com</a></p>
+        <p>&copy; <span id="year"></span> Cheyne Kueh 郭紹安 &nbsp; ${bi("Updated November 2026", "更新於 2026 年 11 月")}</p>
+        <p class="local-only"><a href="local-plans.html">${bi("Local: plans and to-dos", "本機：規劃與待辦")}</a></p>
       </div>
     </footer>`;
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -125,4 +125,69 @@ function initChrome(activeId) {
   renderNav(activeId);
   renderFooter();
   initToggles();
+  initLocal();
+  initMotion();
+}
+
+// ---- local only: to-do flags and the plans page show on localhost, never on the live site ----
+function initLocal() {
+  if (!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+  document.documentElement.classList.add("is-local");
+}
+
+// ---- motion: first-visit intro, page transitions, scroll reveals, progress, hero drift, counters ----
+// Everything here is decoration: content is complete and visible without it.
+function initMotion() {
+  const root = document.documentElement;
+  try { sessionStorage.setItem("seen", "1"); } catch (e) {}
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || navigator.webdriver) return;
+
+  // scroll progress, and the nav tucks away while reading down and returns on the way up
+  const bar = document.createElement("div");
+  bar.className = "progress"; bar.setAttribute("aria-hidden", "true");
+  document.body.appendChild(bar);
+  const nav = document.querySelector(".nav");
+  const photo = document.querySelector(".hero-photo");
+  let lastY = scrollY, ticking = false;
+  const onScroll = () => {
+    const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    if (nav && !nav.classList.contains("is-open")) nav.classList.toggle("is-tucked", y > lastY && y > 240);
+    if (photo && y < innerHeight * 1.2) photo.style.transform = `translate3d(0, ${y * 0.18}px, 0) scale(1.04)`;
+    lastY = y; ticking = false;
+  };
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  // reveals: one gentle rise per block, staggered within a group
+  const targets = document.querySelectorAll(".section-head, .page-head, .highlights li, .recent li, .row, .project, .skills div, .facts > div, .two-col > div, .close .wrap > *, .course-card, .quest-section");
+  if (!("IntersectionObserver" in window) || !targets.length) return;
+  root.classList.add("reveal-on");
+  const groups = new Map();
+  targets.forEach(el => {
+    const g = el.parentElement; const i = groups.get(g) || 0; groups.set(g, i + 1);
+    el.classList.add("rv"); el.style.setProperty("--d", `${Math.min(i, 6) * 70}ms`);
+  });
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("is-in"); io.unobserve(e.target);
+    e.target.querySelectorAll("[data-count]").forEach(countUp);
+    if (e.target.matches("[data-count]")) countUp(e.target);
+  }), { rootMargin: "0px 0px -8% 0px" });
+  targets.forEach(el => io.observe(el));
+}
+
+// counts a figure up from zero, keeping its prefix, suffix and separators ("NT$1.04M", "5,000", "80+")
+function countUp(el) {
+  const text = el.textContent, m = text.match(/[\d,.]+/);
+  if (!m) return;
+  const raw = m[0], target = parseFloat(raw.replace(/,/g, "")), dec = (raw.split(".")[1] || "").length;
+  const pre = text.slice(0, m.index), post = text.slice(m.index + raw.length), t0 = performance.now();
+  const fmt = v => (raw.includes(",") ? v.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }) : v.toFixed(dec));
+  const step = t => {
+    const k = Math.min((t - t0) / 900, 1), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = pre + fmt(target * e) + post;
+    if (k < 1) requestAnimationFrame(step); else el.textContent = text;
+  };
+  requestAnimationFrame(step);
 }

@@ -124,9 +124,9 @@ The site is a returned manuscript on warm paper. A golden-hour photograph (looki
 
 郭紹安 stands vertically in three manuscript cells beside Cheyne Kueh at equal weight. The manuscript survives below the hero as a row of small cells under every heading, hairlines between rows, and double rules closing the hero and the page. Density is calm and editorial.
 
-Navigation is six links: Research, Leadership, Teaching, CV, Course reviews, Contact. Leadership, Teaching and Contact jump to sections of the home page. A three-way style switch (light, dark, plain) sits beside the language button; plain is the quiet academic version of every page.
+Navigation is five links: About (home), Research, Experience, Courses, Contact (the contact band at the end of About). There is no CV page: About holds the hero, four Highlights, About (with interests), Education with awards, Skills and languages, and Contact; Research holds the projects and presentations; Experience holds leadership and teaching. The CV exists as a PDF, printed from `cv-print.html` (noindex, not linked) by `tools/build_cv_pdf.py`; `cv.html` redirects old links to the right page. A three-way style switch (light, dark, plain) sits beside the language button; plain is the quiet academic version of every page.
 
-The CV is curated, not exhaustive: about twenty entries in nine sections, each with a title, organisation, dates and one result line. It prints to a two-page A4 PDF from the same page.
+Entries are curated: each has a title, organisation, dates and one result line. The two-page A4 PDF CV prints from cv-print.html.
 
 This world replaced, in turn, a campaign-map world and a green-ruled manuscript with a red pen and Klee One. Nothing from either carries over: no seals, banners, map art, red pen, green ruling, line numbers or Klee One.
 
@@ -160,7 +160,7 @@ The `-dark` tokens map one to one onto the same roles under `prefers-color-schem
 ### Named Rules
 **The One Pen Rule.** Gold marks the record and interaction state. It never fills a surface, colours a heading or decorates.
 
-**The One Stamp Rule.** One filled stamp per view: Email on the home page, Download PDF on the CV. Every other action is an ink outline.
+**The One Stamp Rule.** One filled stamp per view: Email on the home page, the first action on each inner page. Every other action is an ink outline.
 
 **The Pencil Means Planned Rule.** Anything not yet done is pencil grey and dashed, never gold.
 
@@ -262,3 +262,14 @@ The third position of the style switch (`data-theme="plain"`, stored in localSto
 - **Don't** add shadows, glows, pills, or gradients other than the hero wash.
 - **Don't** bring back the red pen, green ruling, Klee One, or anything from the campaign-map world.
 - **Don't** publish a phone number, more than one lab device, or anything planned as if done.
+
+## Motion
+
+All motion lives in `initMotion()` in `partials.js` and is skipped under reduced motion and in automated browsers; every page is complete without it.
+- **First visit in a session:** a paper veil with 郭紹安 spacing into place, lifting after 1.5s (pure CSS on `html.intro`, set by the head boot script, so it cannot get stuck).
+- **Page switches:** cross-document View Transitions; the sheet fades and rises 12px, the nav holds still. Browsers without support switch instantly.
+- **Scrolling:** one reveal (fade and 18px rise, staggered 70ms within a group); a 2px gold reading-progress line; the nav tucks away while reading down and returns on the way up; the hero photo drifts at 0.18× scroll; Highlights count up once.
+
+## Local-only tools
+
+On localhost, elements with `data-todo` get an orange dashed outline and a "TO DO" note; the live site never shows them. `local-plans.html` (gitignored) collects every flag and lists content to add later. `admin.html` (gitignored) now edits course reviews only.

@@ -326,7 +326,7 @@ html[data-lang="zh"] [data-l="en"] { display: none; }
   .nav-brand-zh { display: none; }
   .nav-links { gap: 1rem; }
   .hero { min-height: 0; align-items: start; }
-  .hero-photo { position: relative; height: 44vh; z-index: 0; }
+  .hero-photo { position: relative; height: 32vh; z-index: 0; }
   .hero::before { display: none; }
   .hero-inner { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-block: 1.75rem 3rem; }
   .name-tate { flex-direction: row; --cell: 4rem; }
@@ -439,3 +439,81 @@ html[data-lang="zh"] [data-l="en"] { display: none; }
 :root[data-theme="plain"] .theme-switch button[aria-pressed="true"] { background: var(--pen); color: #fff; }
 @media (max-width: 760px) { :root[data-theme="plain"] .hero-inner { padding-block: 2.5rem; } }
 :root[data-theme="plain"] .lede { max-width: 60ch; }
+
+/* ---------- home: highlights, four real figures that each open their source ---------- */
+.highlights-section { padding-block: calc(var(--section) * .55); }
+.highlights { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+.highlights a {
+  display: grid; gap: .15rem; height: 100%; padding-top: 1rem; text-decoration: none;
+  border-top: 2px solid var(--rule-strong); transition: border-color .2s var(--ease);
+}
+.highlights a:hover { border-top-color: var(--pen); }
+.highlights strong { font: 700 clamp(2rem, 1.5rem + 1.6vw, 2.75rem)/1.1 var(--font-display); font-variant-numeric: lining-nums; }
+.highlights a > span { font-weight: 700; }
+.highlights small { color: var(--ink-2); font-size: var(--step--1); line-height: 1.5; }
+.about p + p { margin-top: 1rem; }
+.skills-col .skills div { grid-template-columns: 11rem minmax(0, 1fr); }
+.skills-col h3::after { display: none; }
+@media (max-width: 860px) { .highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.5rem; } }
+@media (max-width: 760px) { .skills-col .skills div { grid-template-columns: minmax(0, 1fr); } }
+.sub-head { margin-top: 3rem; margin-bottom: .25rem; font: 600 var(--step-2)/1.25 var(--font-display); }
+
+/* ---------- local only: to-do flags (hidden on the live site) ---------- */
+.local-only { display: none; }
+.is-local .local-only { display: block; }
+.is-local [data-todo] { outline: 1.5px dashed #c2410c; outline-offset: 4px; }
+.is-local [data-todo]::after {
+  content: "TO DO: " attr(data-todo); display: block; margin-top: .4rem; padding: .35rem .55rem;
+  font: 600 .8rem/1.4 var(--font-body); color: #7c2d12; background: #ffedd5; border-radius: 2px;
+}
+@media print { .is-local [data-todo] { outline: 0; } .is-local [data-todo]::after { display: none; } }
+
+/* ---------- home: recent, seeking ---------- */
+.recent { list-style: none; padding: 0; border-top: 1px solid var(--rule); }
+.recent li { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1rem; padding-block: .8rem; border-bottom: 1px solid var(--rule); }
+.recent-when { color: var(--pencil); font-size: var(--step--1); font-variant-numeric: tabular-nums; line-height: 1.9; }
+@media (max-width: 520px) { .recent li { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+.seeking { max-width: 60ch; font-weight: 600; }
+.h1-en { font: 600 .5em/1 var(--font-display); color: var(--ink-2); margin-left: .4rem; }
+.en-note { color: var(--ink-2); font-size: var(--step--1); }
+.footer .wrap { display: grid; gap: .3rem; }
+
+/* ---------- motion (all of it skipped under reduced motion; content never depends on it) ---------- */
+.progress { position: fixed; inset: 0 0 auto 0; height: 2px; z-index: 30; background: var(--pen); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+.nav { transition: transform .35s var(--ease); }
+.nav.is-tucked { transform: translateY(-100%); }
+.hero { overflow: hidden; }
+.hero-photo { will-change: transform; }
+
+.reveal-on .rv { transition: opacity .7s var(--ease) var(--d, 0ms), transform .7s var(--ease) var(--d, 0ms); }
+.reveal-on .rv:not(.is-in) { opacity: 0; transform: translateY(18px); }
+
+/* first visit in a session: the name is set in its cells, then the sheet lifts */
+html.intro::before, html.intro::after { position: fixed; z-index: 100; pointer-events: none; }
+html.intro::before { content: ""; inset: 0; background: var(--paper); animation: intro-veil 1.5s var(--ease) forwards; }
+html.intro::after {
+  content: "郭紹安"; inset: 0; display: grid; place-items: center;
+  font: 700 clamp(2.5rem, 2rem + 4vw, 4.5rem)/1 var(--font-name); color: var(--ink); letter-spacing: .6em; text-indent: .6em;
+  animation: intro-name 1.5s var(--ease) forwards;
+}
+@keyframes intro-veil { 0%, 55% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+@keyframes intro-name {
+  0% { opacity: 0; letter-spacing: 1.2em; text-indent: 1.2em; }
+  35%, 55% { opacity: 1; letter-spacing: .6em; text-indent: .6em; }
+  100% { opacity: 0; letter-spacing: .5em; text-indent: .5em; transform: translateY(-12px); visibility: hidden; }
+}
+
+/* page switches: the sheet slides softly; the nav stays put */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .nav { view-transition-name: site-nav; }
+  ::view-transition-old(root) { animation: vt-out .22s var(--ease) both; }
+  ::view-transition-new(root) { animation: vt-in .38s var(--ease) both; }
+}
+@keyframes vt-out { to { opacity: 0; transform: translateY(-8px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html.intro::before, html.intro::after { display: none; }
+}
+@media print { .progress { display: none; } }
