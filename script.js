@@ -1,6 +1,15 @@
 // ---- Page rendering (see data.js for content, partials.js for nav/footer/theme) ----
 
-// ---- Course reviews (中文) ----
+function renderHeroStats() {
+  const el = document.getElementById("heroStats");
+  if (!el || typeof HERO_STATS === "undefined") return;
+  el.innerHTML = HERO_STATS.map(s => `
+    <div class="stat-tile">
+      <span class="value">${s.value}</span>
+      <div class="label">${s.label}</div>
+      <div class="note">${s.note}</div>
+    </div>`).join("");
+}
 
 function questRowHTML(label, note, pct, valueText, baseline) {
   const fill = Math.min(pct, 100);
@@ -46,7 +55,7 @@ function starRow(n) {
       ? '<span class="star-fill">★</span>'
       : '<span class="star-empty">★</span>';
   }
-  return `<span aria-label="${n} / 5">${out}</span>`;
+  return out;
 }
 
 function courseCardHTML(c) {
@@ -54,7 +63,7 @@ function courseCardHTML(c) {
     <details class="course-card">
       <summary>
         <div class="course-card-top">
-          <h2>${c.name}</h2>
+          <h3>${c.name}</h3>
           <span class="course-grade">${c.grade}</span>
         </div>
         <div class="course-meta">
@@ -68,10 +77,10 @@ function courseCardHTML(c) {
         </div>
       </summary>
       <div class="course-body">
-        <div class="course-field"><h3>授課內容</h3><p>${c.content}</p></div>
-        <div class="course-field"><h3>上課方式</h3><p>${c.method}</p></div>
-        <div class="course-field"><h3>評分方式</h3><p>${c.grading}</p></div>
-        <div class="course-field"><h3>心得與評語</h3><p>${c.review}</p></div>
+        <div class="course-field"><h4>授課內容</h4><p>${c.content}</p></div>
+        <div class="course-field"><h4>上課方式</h4><p>${c.method}</p></div>
+        <div class="course-field"><h4>評分方式</h4><p>${c.grading}</p></div>
+        <div class="course-field"><h4>心得與評語</h4><p>${c.review}</p></div>
       </div>
     </details>`;
 }
@@ -86,7 +95,7 @@ function renderCourses() {
   function paint() {
     tabsEl.innerHTML = COURSE_TERMS.map(t => `
       <button class="term-tab" role="tab" data-term="${t.id}" aria-selected="${t.id === active}">
-        ${t.label}，${t.subtitle}
+        ${t.label} <span style="opacity:.7;font-weight:500">· ${t.subtitle}</span>
       </button>`).join("");
 
     const term = COURSE_TERMS.find(t => t.id === active);
@@ -97,7 +106,7 @@ function renderCourses() {
       </div>
       ${term.selfStudy && term.selfStudy.length ? `
         <div class="self-study">
-          <h3>自學：臺大 OCW</h3>
+          <h4>自學 · 臺大 OCW</h4>
           <ul>${term.selfStudy.map(c => `<li>${c.name}<span>${c.teacher}</span></li>`).join("")}</ul>
         </div>` : ""}`;
 
@@ -112,9 +121,143 @@ function renderCourses() {
   paint();
 }
 
+const STATUS_LABELS = { current: "目前", past: "過去", all: "全部" };
+const TAG_LABELS = { all: "全部", research: "研究", leadership: "領導與服務", learning: "自學", future: "未來規劃" };
+const YEAR_LABELS = { 115: "115 學年 · 大二", 114: "114 學年 · 大一", 113: "113 學年 · 入學前" };
+
+function expItemHTML(e) {
+  return `
+    <li class="exp-item">
+      <span class="exp-status ${e.active ? "is-active" : ""}"></span>
+      <div class="exp-main">
+        <div class="exp-top">
+          <h3 class="exp-title">${e.title}</h3>
+          <span class="exp-period">${e.period}</span>
+        </div>
+        <p class="exp-org">${e.org}</p>
+        <ul class="exp-bullets">
+          ${e.bullets.map(b => `<li>${b}</li>`).join("")}
+        </ul>
+      </div>
+    </li>`;
+}
+
+function renderExperience() {
+  const filtersEl = document.getElementById("tagFilters");
+  const feedEl = document.getElementById("expFeed");
+  const noteEl = document.getElementById("expNote");
+  if (!filtersEl || !feedEl || typeof EXPERIENCE === "undefined") return;
+
+  if (noteEl && typeof EXPERIENCE_NOTE !== "undefined") noteEl.textContent = EXPERIENCE_NOTE;
+
+  // only offer tags that have entries
+  const tags = Object.keys(TAG_LABELS).filter(k => k === "all" || EXPERIENCE.some(e => e.tag === k));
+  let status = "all";
+  let tag = "all";
+
+  function buttons(labels, keys, active, attr) {
+    return keys.map(k => `<button class="tag-filter" data-${attr}="${k}" aria-pressed="${k === active}">${labels[k]}</button>`).join("");
+  }
+
+  function paint() {
+    filtersEl.innerHTML = `
+      <div class="filter-row">${buttons(STATUS_LABELS, Object.keys(STATUS_LABELS), status, "status")}</div>
+      <div class="filter-row filter-row-sub">${buttons(TAG_LABELS, tags, tag, "tag")}</div>`;
+
+    const items = EXPERIENCE.filter(e =>
+      (status === "all" || (status === "current") === !!e.active) &&
+      (tag === "all" || e.tag === tag));
+
+    const years = [...new Set(items.map(e => e.year))].sort((a, b) => b - a);
+    feedEl.innerHTML = items.length
+      ? years.map(y => `
+          <li class="exp-year">${YEAR_LABELS[y] || `${y} 學年`}</li>
+          ${items.filter(e => e.year === y).map(expItemHTML).join("")}`).join("")
+      : `<li class="exp-empty">這個分類目前沒有項目。</li>`;
+
+    filtersEl.querySelectorAll("[data-status]").forEach(btn => {
+      btn.addEventListener("click", () => { status = btn.dataset.status; paint(); });
+    });
+    filtersEl.querySelectorAll("[data-tag]").forEach(btn => {
+      btn.addEventListener("click", () => { tag = btn.dataset.tag; paint(); });
+    });
+  }
+
+  paint();
+}
+
+function renderNZ() {
+  const introEl = document.getElementById("nzIntro");
+  const bodyEl = document.getElementById("nzBody");
+  if (!introEl || !bodyEl || typeof NZ === "undefined") return;
+
+  introEl.textContent = NZ.intro;
+
+  bodyEl.innerHTML = `
+    <p class="hs-intro"><strong>${NZ.school}</strong> · ${NZ.schoolPeriod}<br>${NZ.schoolIntro}</p>
+    <div class="hs-stats">
+      ${NZ.stats.map(s => `
+        <div class="hs-stat">
+          <span class="value">${s.value}</span>
+          <span class="label">${s.label}</span>
+        </div>`).join("")}
+    </div>
+    ${NZ.sections.map(s => `
+      <div class="hs-section">
+        <h3>${s.heading}</h3>
+        <ul>${s.items.map(i => `<li>${i}</li>`).join("")}</ul>
+      </div>`).join("")}
+    <div class="hs-section">
+      <h3>${NZ.uoa.heading}</h3>
+      <p style="color:var(--text-muted);font-size:0.92rem;margin:0 0 16px;">${NZ.uoa.intro}</p>
+      <div class="uoa-grid">
+        ${NZ.uoa.courses.map(c => `
+          <div class="uoa-card">
+            <span class="code">${c.code}</span>
+            <h4>${c.name}</h4>
+            <p>${c.note}</p>
+          </div>`).join("")}
+      </div>
+    </div>
+    <p class="hs-more">${NZ.more}</p>
+  `;
+}
+
+function renderOther() {
+  const el = document.getElementById("otherBody");
+  if (!el || typeof OTHER === "undefined") return;
+
+  el.innerHTML = OTHER.sections.map(group => `
+    <div class="other-group">
+      <div class="other-group-heading">
+        <h3>${group.heading}</h3>
+        <span class="subtitle">${group.subtitle}</span>
+      </div>
+      <ol class="exp-feed">
+        ${group.items.map(i => `
+          <li class="exp-item">
+            <div class="exp-main">
+              <div class="exp-top">
+                <h3 class="exp-title">${i.title}</h3>
+                <span class="exp-period">${i.period || ""}</span>
+              </div>
+              ${i.org ? `<p class="exp-org">${i.org}</p>` : ""}
+              <ul class="exp-bullets">${i.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
+            </div>
+          </li>`).join("")}
+      </ol>
+    </div>`).join("");
+}
+
 // ---- Boot ----
 
 initChrome(document.body.dataset.page);
+
+renderHeroStats();
 renderQuests();
 renderCourses();
-initPen();
+renderExperience();
+renderNZ();
+renderOther();
+
+initRevealObserver();

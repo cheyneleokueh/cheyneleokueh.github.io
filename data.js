@@ -700,12 +700,6 @@ const COURSE_TERMS = [
 const EXPERIENCE = [
   {
     "title": "會長 · SPIE Student Chapter",
-    "titleEn": "President · SPIE Student Chapter",
-    "orgEn": "SPIE NYCU Student Chapter",
-    "periodEn": "2026 – now",
-    "bulletsEn": [
-      "Elected president of the SPIE (International Society for Optics and Photonics) chapter at NYCU; runs the chapter and its events"
-    ],
     "year": 115,
     "org": "SPIE NYCU Student Chapter · 國立陽明交通大學",
     "period": "115-1 – 現在",
@@ -717,14 +711,6 @@ const EXPERIENCE = [
   },
   {
     "title": "Undergraduate Researcher",
-    "titleEn": "Undergraduate Researcher",
-    "orgEn": "Prof. Fang-Chung Chen's lab · NYCU Photonics",
-    "periodEn": "2025 – now",
-    "bulletsEn": [
-      "Special Projects in Photonics I–II: spectral absorption and optimisation simulation",
-      "Spring 2026: analysed simulated underwater spectra against the lab's Shockley–Queisser limit code; presented the results at the lab meeting",
-      "Fall 2026, Special Project III: inverse device-parameter extraction for perovskite solar cells, using a drift-diffusion digital twin (OghmaNano), optimisation fitting and a conditional autoencoder on measured J–V curves"
-    ],
     "year": 114,
     "org": "陳方中 Lab · NYCU 光電工程學系",
     "period": "114-1 – 現在",
@@ -738,12 +724,6 @@ const EXPERIENCE = [
   },
   {
     "title": "學生會 交通分會 · 福利部 部長",
-    "titleEn": "Welfare Minister",
-    "orgEn": "NYCU Student Association",
-    "periodEn": "2026 – now",
-    "bulletsEn": [
-      "Leads student-welfare work: recruiting, care for students in difficulty, exam-week supplies, and interpreting for the association"
-    ],
     "year": 115,
     "org": "國立陽明交通大學學生會",
     "period": "115-1 – 現在",
@@ -755,12 +735,6 @@ const EXPERIENCE = [
   },
   {
     "title": "學生代表",
-    "titleEn": "Student Representative",
-    "orgEn": "NYCU Office of International Affairs",
-    "periodEn": "2026 – now",
-    "bulletsEn": [
-      "Represents students in international-affairs meetings and events"
-    ],
     "year": 115,
     "org": "國立陽明交通大學 國際處",
     "period": "115-1 – 現在",
@@ -772,12 +746,6 @@ const EXPERIENCE = [
   },
   {
     "title": "學生會 交通分會 · 秘書部",
-    "titleEn": "Secretariat and Election Committee",
-    "orgEn": "NYCU Student Association",
-    "periodEn": "2025 – 2026",
-    "bulletsEn": [
-      "Secretariat member; minutes and liaison for the president's town halls; ran student-council elections"
-    ],
     "year": 114,
     "org": "國立陽明交通大學學生會 · 選舉委員會",
     "period": "114-1 – 114-2",
@@ -789,12 +757,6 @@ const EXPERIENCE = [
   },
   {
     "title": "副分會長 · 少數國家分會",
-    "titleEn": "Vice-chair · Minority-Countries Branch",
-    "orgEn": "Overseas Chinese Students' Association",
-    "periodEn": "2026 – now",
-    "bulletsEn": [
-      "Helps new international and overseas students settle in and runs branch events"
-    ],
     "year": 115,
     "org": "僑生聯誼會",
     "period": "115-1 – 現在",
@@ -806,12 +768,6 @@ const EXPERIENCE = [
   },
   {
     "title": "系羽 隊長",
-    "titleEn": "Captain",
-    "orgEn": "Photonics badminton team",
-    "periodEn": "2026 – now",
-    "bulletsEn": [
-      "Runs team training and leads the department team at inter-department tournaments"
-    ],
     "year": 115,
     "org": "光電工程學系羽球隊",
     "period": "115-1 – 現在",
@@ -823,12 +779,6 @@ const EXPERIENCE = [
   },
   {
     "title": "班代",
-    "titleEn": "Class Representative",
-    "orgEn": "NYCU Photonics",
-    "periodEn": "2025 – now",
-    "bulletsEn": [
-      "Main contact between the class and the department: announcements, timetable clashes and class events"
-    ],
     "year": 114,
     "org": "光電工程學系",
     "period": "114-1 – 現在",
@@ -840,12 +790,6 @@ const EXPERIENCE = [
   },
   {
     "title": "系學會 成員 · 公關組、系小編",
-    "titleEn": "PR Team and Social Media Editor",
-    "orgEn": "Photonics Student Association",
-    "periodEn": "2025 – now",
-    "bulletsEn": [
-      "Runs the association's social media; promotion and photography for department events"
-    ],
     "year": 114,
     "org": "光電工程學系學生會",
     "period": "114-1 – 現在",
@@ -857,13 +801,6 @@ const EXPERIENCE = [
   },
   {
     "title": "英語檢定 · TOEIC 960 · BESTEP 菁英二獎",
-    "titleEn": "English certificates · TOEIC 960 · BESTEP Elite Award",
-    "orgEn": "Self-study",
-    "periodEn": "2026",
-    "bulletsEn": [
-      "TOEIC Listening & Reading: 960",
-      "BESTEP (Ministry of Education English test): Elite Award, 2nd prize"
-    ],
     "year": 115,
     "org": "自學",
     "period": "115-1",
@@ -876,12 +813,6 @@ const EXPERIENCE = [
   },
   {
     "title": "日文檢定 JLPT N3",
-    "titleEn": "Japanese · JLPT N3",
-    "orgEn": "Self-study",
-    "periodEn": "2025",
-    "bulletsEn": [
-      "Finished NYCU Japanese II with A+ and passed JLPT N3; working towards N2"
-    ],
     "year": 114,
     "org": "自學",
     "period": "114-1",
@@ -893,12 +824,6 @@ const EXPERIENCE = [
   },
   {
     "title": "Google Cloud Skill Boost",
-    "titleEn": "Google Cloud Skills Boost",
-    "orgEn": "Self-study",
-    "periodEn": "Feb – Aug 2025",
-    "bulletsEn": [
-      "8 skill badges in cloud and generative AI: Vertex AI prompt design, multimodal RAG, BigQuery ML, Vertex AI deployment, Gemini API, Gen AI with Streamlit, Security Command Center, Gemini and Imagen"
-    ],
     "year": 113,
     "org": "自學",
     "period": "2025/02 – 2025/08",
@@ -910,12 +835,6 @@ const EXPERIENCE = [
   },
   {
     "title": "潛水 Open Water 證照",
-    "titleEn": "PADI Open Water Diver",
-    "orgEn": "PADI",
-    "periodEn": "Aug 2026",
-    "bulletsEn": [
-      "Certified PADI Open Water Diver"
-    ],
     "year": 114,
     "org": "PADI",
     "period": "2026/08",
@@ -928,7 +847,6 @@ const EXPERIENCE = [
 ];
 
 let EXPERIENCE_NOTE = "還有更多想嘗試的事，之後想到就會陸續補上這裡 — 大學才剛開始，慢慢來。";
-let EXPERIENCE_NOTE_EN = "More to come as I go. University has only just begun."
 
 // ---------------- Publications ----------------
 
@@ -1094,9 +1012,6 @@ const OTHER = {
           "period": "2023/07 – 2025/08",
           "bullets": [
             "一對一及小組家教，教授英文與數學。"
-          ],
-          "bulletsEn": [
-            "One-to-one and small-group tutoring in English and maths."
           ]
         },
         {
@@ -1104,7 +1019,7 @@ const OTHER = {
           "org": "Independent",
           "period": "Active",
           "bullets": [
-            "Tutoring middle- and high-school students in English, maths, the sciences and ICT."
+            "Tutoring Middle School ~ Highschool Students. Focus: English, Mathematics, Sciences, ICT."
           ]
         }
       ]
@@ -1122,15 +1037,6 @@ const OTHER = {
             "從臺大 OCW 開始自學：中華民國憲法及政府（湯德宗）、民法總則（陳聰富）、刑法總則（王皇玉）。",
             "114 暑修民法總則（A）與刑法總則（A+）。",
             "115-1 修科法所三門課：企業金融法、國際經濟法與國家安全、國際航空與太空法。光電背景讓我特別在意科技、產業和國際規範交會的地方。"
-          ],
-          "titleEn": "From self-study to law courses",
-          "orgEn": "Self-study, summer session, Institute of Technology Law",
-          "periodEn": "Spring 2025 – now",
-          "bulletsEn": [
-            "I study law to understand how society works: how institutions are designed, how disputes are settled, and how rules keep up as technology moves ahead.",
-            "Started with NTU OpenCourseWare: the ROC Constitution and Government (湯德宗), General Principles of Civil Law (陳聰富) and General Principles of Criminal Law (王皇玉).",
-            "Summer session: General Principles of Civil Law (A) and of Criminal Law (A+).",
-            "Fall 2026: three courses at the Institute of Technology Law, on corporate finance law, international economic law and national security, and international air and space law. A photonics background draws me to where technology, industry and international rules meet."
           ]
         }
       ]
