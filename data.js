@@ -1094,6 +1094,9 @@ const OTHER = {
           "period": "2023/07 – 2025/08",
           "bullets": [
             "一對一及小組家教，教授英文與數學。"
+          ],
+          "bulletsEn": [
+            "One-to-one and small-group tutoring in English and maths."
           ]
         },
         {
@@ -1101,7 +1104,7 @@ const OTHER = {
           "org": "Independent",
           "period": "Active",
           "bullets": [
-            "Tutoring Middle School ~ Highschool Students. Focus: English, Mathematics, Sciences, ICT."
+            "Tutoring middle- and high-school students in English, maths, the sciences and ICT."
           ]
         }
       ]
@@ -1119,6 +1122,15 @@ const OTHER = {
             "從臺大 OCW 開始自學：中華民國憲法及政府（湯德宗）、民法總則（陳聰富）、刑法總則（王皇玉）。",
             "114 暑修民法總則（A）與刑法總則（A+）。",
             "115-1 修科法所三門課：企業金融法、國際經濟法與國家安全、國際航空與太空法。光電背景讓我特別在意科技、產業和國際規範交會的地方。"
+          ],
+          "titleEn": "From self-study to law courses",
+          "orgEn": "Self-study, summer session, Institute of Technology Law",
+          "periodEn": "Spring 2025 – now",
+          "bulletsEn": [
+            "I study law to understand how society works: how institutions are designed, how disputes are settled, and how rules keep up as technology moves ahead.",
+            "Started with NTU OpenCourseWare: the ROC Constitution and Government (湯德宗), General Principles of Civil Law (陳聰富) and General Principles of Criminal Law (王皇玉).",
+            "Summer session: General Principles of Civil Law (A) and of Criminal Law (A+).",
+            "Fall 2026: three courses at the Institute of Technology Law, on corporate finance law, international economic law and national security, and international air and space law. A photonics background draws me to where technology, industry and international rules meet."
           ]
         }
       ]

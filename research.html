@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research · Cheyne Kueh 郭紹安</title>
+<meta name="description" content="Cheyne Kueh's research in Prof. Fang-Chung Chen's lab at NYCU: Shockley–Queisser limit simulation, a perovskite solar-cell digital twin, and what one J–V curve cannot settle.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=202611234">
+<script>try{var l=localStorage.getItem("lang");if(l==="zh"){document.documentElement.dataset.lang="zh";document.documentElement.lang="zh-Hant"}var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-page="research">
+
+<a class="skip" href="#main"><span data-l="en">Skip to content</span><span data-l="zh">跳到內容</span></a>
+<div id="nav-mount"></div>
+
+<main id="main" class="wrap">
+  <header class="page-head">
+    <h1><span data-l="en">Research</span><span data-l="zh">研究</span></h1>
+    <p><span data-l="en">Prof. Fang-Chung Chen's organic electronics lab, NYCU Photonics, since my first semester. Four projects, marked as they stand.</span><span data-l="zh">大一上起於陳方中教授有機電子實驗室。四個專題，照目前的狀態批改。</span></p>
+  </header>
+
+  <article class="project" id="sq" aria-labelledby="h-sq">
+    <svg class="mark" role="img" aria-label="花丸: result"><use href="assets/marks.svg#m-hana"/></svg>
+    <div class="project-body">
+      <h2 id="h-sq"><span data-l="en">Shockley–Queisser limit simulation</span><span data-l="zh">Shockley–Queisser 極限模擬與最佳化</span></h2>
+      <p class="record-when"><span data-l="en">2025–26, Special Project I–II</span><span data-l="zh">2025–26，光電專題研究（一）（二）</span></p>
+      <dl>
+        <dt><span data-l="en">Question</span><span data-l="zh">問題</span></dt>
+        <dd><span data-l="en">How does water depth change the best efficiency a solar cell can reach?</span><span data-l="zh">水深如何改變太陽能電池可達到的最佳效率？</span></dd>
+        <dt><span data-l="en">Method</span><span data-l="zh">方法</span></dt>
+        <dd><span data-l="en">A numerical optimiser built on the detailed-balance limit, run on simulated underwater spectra and checked against the lab's limit code.</span><span data-l="zh">以細緻平衡極限建立數值最佳化工具，套用到水下模擬光譜，並與實驗室的極限程式對照。</span></dd>
+        <dt><span data-l="en">Result</span><span data-l="zh">成果</span></dt>
+        <dd><span data-l="en">Presented at the lab meeting, spring 2026.</span><span data-l="zh">2026 年春季於實驗室 meeting 報告。</span></dd>
+      </dl>
+      <figure class="figure">
+        <svg viewBox="0 0 600 340" role="img" aria-labelledby="fig-sq-t">
+          <title id="fig-sq-t">Detailed-balance efficiency limit against bandgap, peaking at 30.5% near 1.26 eV</title>
+          <path class="fig-grid" d="M40 220H560M40 140H560M40 60H560"/>
+          <path class="fig-axis" d="M40 20V300H560"/>
+          <path class="fig-curve" d="M40 183.7 L52.5 163.8 L65 145.6 L77.4 128.8 L89.9 113.7 L102.4 100.6 L114.9 89.1 L127.4 79.5 L139.8 71.7 L152.3 65.6 L164.8 61 L177.3 58 L189.8 56.3 L198.1 56 L206.4 56.2 L218.9 57.4 L231.4 59.7 L243.8 62.9 L256.3 67 L268.8 71.8 L281.3 77.1 L293.8 83 L306.2 89.4 L318.7 96.1 L331.2 103.1 L343.7 110.3 L356.2 117.6 L368.6 125 L381.1 132.5 L393.6 139.9 L406.1 147.3 L418.6 154.6 L431 161.8 L443.5 168.8 L456 175.7 L468.5 182.3 L481 188.8 L493.4 195 L505.9 201.1 L518.4 206.9 L530.9 212.5 L543.4 217.7 L560 224.5"/>
+          <path class="fig-pen" d="M172 44 C182 30 222 30 230 46 C238 64 210 76 188 72 C166 68 160 54 176 40"/>
+          <text class="fig-note" x="238" y="40">30.5% at 1.26 eV</text>
+          <path class="fig-grid" d="M169 64V104M268.8 76V128"/>
+          <circle cx="169" cy="60" r="3.5" class="fig-text"/>
+          <text class="fig-text" x="169" y="118" text-anchor="middle">Si 1.12 eV</text>
+          <circle cx="268.8" cy="71.8" r="3.5" class="fig-text"/>
+          <text class="fig-text" x="268.8" y="142" text-anchor="middle">perovskite ≈ 1.6 eV</text>
+          <text class="fig-text" x="34" y="304" text-anchor="end">0</text>
+          <text class="fig-text" x="34" y="224" text-anchor="end">10%</text>
+          <text class="fig-text" x="34" y="144" text-anchor="end">20%</text>
+          <text class="fig-text" x="34" y="64" text-anchor="end">30%</text>
+          <text class="fig-text" x="40" y="320" text-anchor="middle">0.5</text>
+          <text class="fig-text" x="144" y="320" text-anchor="middle">1.0</text>
+          <text class="fig-text" x="248" y="320" text-anchor="middle">1.5</text>
+          <text class="fig-text" x="352" y="320" text-anchor="middle">2.0</text>
+          <text class="fig-text" x="456" y="320" text-anchor="middle">2.5</text>
+          <text class="fig-text" x="560" y="320" text-anchor="middle">3.0</text>
+          <text class="fig-text" x="300" y="337" text-anchor="middle">bandgap (eV)</text>
+        </svg>
+        <figcaption><span data-l="en">The textbook form of the limit, recomputed for this page: a 5,778 K blackbody sun and a cell at 300 K. The lab work used measured and underwater spectra, which are not shown here.</span><span data-l="zh">教科書版本的極限，為本頁重新計算：以 5,778 K 黑體近似太陽、電池溫度 300 K。實驗室的研究使用量測與水下光譜，未在此呈現。</span></figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="project" id="twin" aria-labelledby="h-twin">
+    <svg class="mark" role="img" aria-label="In progress"><use href="assets/marks.svg#m-arc"/></svg>
+    <div class="project-body">
+      <h2 id="h-twin"><span data-l="en">A digital twin of a perovskite solar cell</span><span data-l="zh">鈣鈦礦太陽能電池的數位分身</span></h2>
+      <p class="record-when"><span data-l="en">2026, Special Project III, in progress</span><span data-l="zh">2026，光電專題研究（三），進行中</span></p>
+      <dl>
+        <dt><span data-l="en">Question</span><span data-l="zh">問題</span></dt>
+        <dd><span data-l="en">Can one measured J–V curve reveal a cell's hidden parameters: carrier lifetime, mobility, ion density, series and shunt resistance?</span><span data-l="zh">一條量測 J–V 曲線，能不能反推出元件的隱藏參數：載子壽命、遷移率、離子密度、串並聯電阻？</span></dd>
+        <dt><span data-l="en">Method</span><span data-l="zh">方法</span></dt>
+        <dd><span data-l="en">A drift-diffusion twin in OghmaNano, then two ways back from the curve: direct optimisation fitting, and a conditional autoencoder trained on 5,000 simulated devices.</span><span data-l="zh">以 OghmaNano 建立 drift-diffusion 數位分身，再用兩種方法從曲線反推：直接最佳化擬合，以及用 5,000 顆模擬元件訓練的 conditional autoencoder。</span></dd>
+        <dt><span data-l="en">So far</span><span data-l="zh">目前</span></dt>
+        <dd><span data-l="en">The paper-trained model runs in the browser as a public demo.</span><span data-l="zh">論文訓練的模型已做成可在瀏覽器執行的公開展示。</span> <a href="https://github.com/cheyneleokueh/perovskite-autoencoder-paper-simulation" rel="noopener"><span data-l="en">Open the repository</span><span data-l="zh">打開程式庫</span></a></dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="project" id="lifetime" aria-labelledby="h-lifetime">
+    <svg class="mark" role="img" aria-label="△: partly"><use href="assets/marks.svg#m-tri"/></svg>
+    <div class="project-body">
+      <h2 id="h-lifetime"><span data-l="en">Carrier lifetime against shunt resistance</span><span data-l="zh">載子壽命與並聯電阻的拉鋸</span></h2>
+      <p class="record-when"><span data-l="en">2026, inconclusive</span><span data-l="zh">2026，尚無定論</span></p>
+      <dl>
+        <dt><span data-l="en">Question</span><span data-l="zh">問題</span></dt>
+        <dd><span data-l="en">Can a single curve separate a short carrier lifetime from a leaky shunt?</span><span data-l="zh">單一條曲線，分得出載子壽命短還是並聯電阻漏電嗎？</span></dd>
+        <dt><span data-l="en">Finding</span><span data-l="zh">發現</span></dt>
+        <dd><span data-l="en">Not yet. Several parameter sets fit equally well, and the autoencoder's fit did not beat brute-force search.</span><span data-l="zh">目前還不行。好幾組參數擬合得一樣好，autoencoder 的結果也沒有贏過暴力搜尋。</span></dd>
+        <dt><span data-l="en">Next</span><span data-l="zh">下一步</span></dt>
+        <dd><span data-l="en">More evidence per device: dark J–V and light-intensity measurements.</span><span data-l="zh">每顆元件需要更多證據：暗態 J–V 與不同光強的量測。</span></dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="project" id="nstc" aria-labelledby="h-nstc">
+    <svg class="mark mark-plan" role="img" aria-label="Planned"><use href="assets/marks.svg#m-plan"/></svg>
+    <div class="project-body">
+      <h2 id="h-nstc"><span data-l="en">NSTC undergraduate research grant, then a five-year master's</span><span data-l="zh">國科會大專生研究計畫，接著五年碩</span></h2>
+      <p class="record-when"><span data-l="en">2027, planned</span><span data-l="zh">2027，規劃中</span></p>
+      <dl>
+        <dt><span data-l="en">Plan</span><span data-l="zh">規劃</span></dt>
+        <dd><span data-l="en">A proposal to extend the digital twin into an efficiency optimiser, advised by Prof. Chen: applying in 2027, project July 2027 to February 2028 if funded.</span><span data-l="zh">把數位分身延伸成效率最佳化工具的計畫，由陳方中教授指導：2027 年申請，若通過執行期為 2027/07 至 2028/02。</span></dd>
+        <dt><span data-l="en">After</span><span data-l="zh">之後</span></dt>
+        <dd><span data-l="en">NYCU's five-year master's track, in the same lab.</span><span data-l="zh">同實驗室的五年碩學程。</span></dd>
+      </dl>
+    </div>
+  </article>
+</main>
+
+<div id="footer-mount"></div>
+
+<script src="partials.js?v=202611234"></script>
+<script src="script.js?v=202611234"></script>
+</body>
+</html>
