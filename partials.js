@@ -8,6 +8,7 @@ const PAGES = [
   { id: "leadership", en: "Leadership", zh: "領導", href: "index.html#leadership" },
   { id: "teaching", en: "Teaching", zh: "教學", href: "index.html#teaching" },
   { id: "cv", en: "CV", zh: "履歷", href: "cv.html" },
+  { id: "courses", en: "Course reviews", zh: "修課心得", href: "courses.html" },
   { id: "contact", en: "Contact", zh: "聯絡", href: "index.html#contact" }
 ];
 
@@ -44,10 +45,11 @@ function renderNav(activeId) {
         </nav>
         <div class="nav-tools">
           <button class="nav-tool" id="langToggle" type="button" aria-label="Switch language / 切換語言">${bi("中文", "EN")}</button>
-          <button class="nav-tool" id="themeToggle" type="button" aria-label="Switch between light and dark">
-            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-          </button>
+          <div class="theme-switch" role="group" aria-label="Page style / 頁面風格">
+            <button type="button" data-theme-set="light" aria-pressed="false" title="Light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><span class="visually-hidden">${bi("Light", "淺色")}</span></button>
+            <button type="button" data-theme-set="dark" aria-pressed="false" title="Dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg><span class="visually-hidden">${bi("Dark", "深色")}</span></button>
+            <button type="button" data-theme-set="plain" aria-pressed="false">${bi("Plain", "簡易")}</button>
+          </div>
         </div>
       </div>
     </header>`;
@@ -60,7 +62,6 @@ function renderFooter() {
     <footer class="footer">
       <div class="wrap">
         <p>&copy; <span id="year"></span> Cheyne Kueh 郭紹安</p>
-        <p class="footer-links"><a href="plain.html">${bi("Plain version", "簡易版")}</a><a href="courses.html" lang="zh-Hant">給學弟妹：修課心得</a></p>
       </div>
     </footer>`;
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -81,13 +82,19 @@ function initToggles() {
   document.getElementById("navLinks")?.addEventListener("click", e => { if (e.target.closest("a")) setOpen(false); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && nav?.classList.contains("is-open")) { setOpen(false); menu.focus(); } });
 
-  document.getElementById("themeToggle")?.addEventListener("click", () => {
-    const current = root.dataset.theme ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    const next = current === "dark" ? "light" : "dark";
-    root.dataset.theme = next;
-    try { localStorage.setItem("theme", next); } catch (e) {}
+  // light / dark / plain: plain is the quiet academic version of every page
+  const sw = document.querySelector(".theme-switch");
+  const effective = () => root.dataset.theme ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const paint = () => sw?.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.themeSet === effective())));
+  sw?.addEventListener("click", e => {
+    const b = e.target.closest("button[data-theme-set]");
+    if (!b) return;
+    root.dataset.theme = b.dataset.themeSet;
+    try { localStorage.setItem("theme", b.dataset.themeSet); } catch (e) {}
+    paint();
   });
+  paint();
 }
 
 // signature: the red-pen marks draw themselves once as they scroll into view
